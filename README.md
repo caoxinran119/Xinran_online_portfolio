@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cao Xinran | Digital Media Artist</title>
-    
-    <base href="/Xinran_online_portfolio/">
+
     
     <style>
         /* --- CSS Variables --- */
