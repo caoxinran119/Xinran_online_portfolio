@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cao Xinran | Digital Media Artist</title>
 
-    
     <style>
         /* --- CSS Variables --- */
         :root {
@@ -846,18 +845,18 @@
         const backgroundImages = {
             // 🚨 路径已修正 (Base URL 会处理开头的斜杠)
             'home': [
-                'images/FLAG_exh7.jpg',    
-                'images/FF_3.jpg',    
-                'images/MN_stand_by_the_river.png',    
-                'images/NEO_3.jpg',    
-                'images/MN_riverside.png'     
+                'https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/FLAG_exh7.jpg',    
+                'https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/FF_3.jpg',    
+                'https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/MN_stand_by_the_river.png',    
+                'https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/NEO_3.jpg',    
+                'https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/MN_riverside.png'     
             ],
             // 其他页面的单张背景图
-            'works': 'images/back.png',    
+            'works': 'https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/back.png',    
             'feed': 'caoxinranphoto/bg-feed.jpg',    
-            'writing': 'images/backforwriting.jpg', 
+            'writing': 'https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/backforwriting.jpg', 
             'store': 'caoxinranphoto/bg-store.jpg',    
-            'about': 'images/Xinran_portrait.jpg',    
+            'about': 'https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/Xinran_portrait.jpg',    
         };
 
         // =======================================================
@@ -874,15 +873,15 @@
                 type: "Video / AR Installation", 
                 year: "2025",
                 // Works 索引页的预览图 (鼠标悬停时右侧显示)
-                previewImagePath: "images/FF_2.jpg", 
+                previewImagePath: "https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/FF_2.jpg", 
                 // 作品详情页的配图
                 detailVisuals: [
-                    { label: "Still 1: Dust Motes", path: "images/FF_3.jpg" }, 
-                    { label: "Still 1: Dust Motes", path: "images/FF_2.jpg" }, 
-                    { label: "Still 2: Empty Hallway", path: "images/FF_4.jpg" } 
+                    { label: "Still 1: Dust Motes", path: "https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/FF_3.jpg" }, 
+                    { label: "Still 1: Dust Motes", path: "https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/FF_2.jpg" }, 
+                    { label: "Still 2: Empty Hallway", path: "https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/FF_4.jpg" } 
                 ],
                 // 作品详情页的背景图
-                backgroundImage: 'images/FF_1.png', 
+                backgroundImage: 'https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/FF_1.png', 
                 videoLink: "https://youtu.be/CEncCsvKKGw?si=lkHh8o9Xpr9zMnDd" 
             },
             { 
@@ -892,14 +891,14 @@
                 description: "Within the inaccessible space, we created a scenario: whenever two individuals meet, they must utter the four characters 闲人免进 (Xián Rén Mian Jìn). 这个空间为我们构建了一个情境, 而规则由我们执行: 每当两人相遇, 他们必须说出“闲人免进”四个字。", 
                 type: "Performance Art", 
                 year: "2024",
-                previewImagePath: "images/NEO_1.png", 
+                previewImagePath: "https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/NEO_1.png", 
                 detailVisuals: [
-                    { label: "Photo 1: Backs to each other", path: "images/NEO_2.png" }, 
-                    { label: "Photo 1: Backs to each other", path: "images/NEO_9.jpg" }, 
-                    { label: "Photo 1: Backs to each other", path: "images/NEO_5.jpg" }, 
-                    { label: "Photo 2: Distance and Shadow", path: "images/NEO_4.jpg" } 
+                    { label: "Photo 1: Backs to each other", path: "https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/NEO_2.png" }, 
+                    { label: "Photo 1: Backs to each other", path: "https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/NEO_9.jpg" }, 
+                    { label: "Photo 1: Backs to each other", path: "https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/NEO_5.jpg" }, 
+                    { label: "Photo 2: Distance and Shadow", path: "https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/NEO_4.jpg" } 
                 ],
-                backgroundImage: 'images/NEO_7.png', 
+                backgroundImage: 'https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/NEO_7.png', 
                 videoLink: "https://youtu.be/lQHwDO1qSmk?si=oz4Dy6zbBklsKn3j"
             },
             { 
@@ -909,12 +908,12 @@
                 description: "Ten years ago in the Forbidden City, I filmed a blurred fragment on a DV camera, where the only thing that remains clear is the guide's voice repeating the words: the flag guard. 十年前我在故宫游览时, 手持的DV摄像机偶然捕捉到的模糊画面和导游那句“护旗队”, 成为了我记忆中的锚点。如果世界是物质组成的结构体，那么它早已化作废墟。但是影像延缓了衰败。就像是一个被时间困住的世界。", 
                 type: "Experimental Film", 
                 year: "2023-Ongoing",
-                previewImagePath: "images/FLAG_exh3.jpg", 
+                previewImagePath: "https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/FLAG_exh3.jpg", 
                 detailVisuals: [
-                    { label: "Object View: Resin Cast", path: "images/FLAG_walking.jpg" }, 
-                    { label: "Text Detail: Embedded Fragment", path: "images/FLAG_whisle.png" } 
+                    { label: "Object View: Resin Cast", path: "https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/FLAG_walking.jpg" }, 
+                    { label: "Text Detail: Embedded Fragment", path: "https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/FLAG_whisle.png" } 
                 ],
-                backgroundImage: 'images/FLAG_explosion.png', 
+                backgroundImage: 'https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/FLAG_explosion.png', 
                 videoLink: "https://youtu.be/F03LG0NyYLU?si=e4i-BwYNkWulletd"
             },
             { 
@@ -924,14 +923,14 @@
                 description: "Centered on a fictional encounter between Chinese poet Hai Zi and American musician Kurt Cobain, this work begins at the moment of their suicides and follows the imagined dialogue that unfolds between them across time, space, and culture. 这部作品以中国诗人海子和美国音乐家Kurt·Cobain的一次虚构相遇为中心, 从他们自杀的那一刻开始, 沿着他们之间跨越时间、空间和文化的想象对话展开。", 
                 type: "Video", 
                 year: "2024",
-                previewImagePath: "images/MN_train_river_.png", 
+                previewImagePath: "https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/MN_train_river_.png", 
                 detailVisuals: [
-                    { label: "Screen Capture: Digital Etching", path: "images/MN_kurtcobain_empty.png" }, 
-                    { label: "Screen Capture: Digital Etching", path: "images/MN_Dionysus.png" }, 
-                    { label: "Screen Capture: Digital Etching", path: "images/MN_stand_by_the_river.png" }, 
-                    { label: "Text Fragment: Overheard Line", path: "images/MN_windowview.png" } 
+                    { label: "Screen Capture: Digital Etching", path: "https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/MN_kurtcobain_empty.png" }, 
+                    { label: "Screen Capture: Digital Etching", path: "https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/MN_Dionysus.png" }, 
+                    { label: "Screen Capture: Digital Etching", path: "https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/MN_stand_by_the_river.png" }, 
+                    { label: "Text Fragment: Overheard Line", path: "https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/MN_windowview.png" } 
                 ],
-                backgroundImage: 'images/MN_railway.png', 
+                backgroundImage: 'https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/MN_railway.png', 
                 videoLink: "https://youtu.be/Fc115SGZ9Tk?si=_KW2m-9dcyTFXE7W"
             },
             { 
@@ -941,12 +940,12 @@
                 description: "An interactive video based on processing. It originated from a chest X-ray of mine. That was the first time I truly faced my own lungs. Subsequently, I transformed this medical image into a data stream and visual images, enabling the internal state of the body to be re-observed and recreated in the digital dimension. 一个基于processing的交互视频。源于我一次胸部X光检查, 那是我第一次真正直面自己的肺部。随后, 我将这份医学影像转化为数据流与可视化影像, 使身体的内部状态在数字维度中被重新观看与再造。", 
                 type: "Interactive Video", 
                 year: "2025",
-                previewImagePath: "images/The Lung of Algorithms_preview.png", 
+                previewImagePath: "https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/The Lung of Algorithms_preview.png", 
                 detailVisuals: [
-                    { label: "Diagram: System Architecture", path: "images/The Lung of Algorithms_total.png" }, 
-                    { label: "Still: Mechanical Element", path: "images/The Lung of Algorithms_black.png" }
+                    { label: "Diagram: System Architecture", path: "https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/The Lung of Algorithms_total.png" }, 
+                    { label: "Still: Mechanical Element", path: "https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/The Lung of Algorithms_black.png" }
                 ],
-                backgroundImage: 'images/The Lung of Algorithms_Xray.jpg' 
+                backgroundImage: 'https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/The Lung of Algorithms_Xray.jpg' 
             },
             { 
                 id: "project-06", 
@@ -955,11 +954,11 @@
                 description: "Fire, rain, thunder, and other sounds of nature begin to collapse as someone murmurs indistinctly the things that leap into their mind. A grand ritual unfolds. 火、雨、雷和其他自然的声音开始消失，因为有人模糊地喃喃自语着跳入他们脑海。一场盛大的仪式展开了。", 
                 type: "Sound Dramaturgy / Experimental Sound", 
                 year: "2023",
-                previewImagePath: "images/EMSOUND_2.png", 
+                previewImagePath: "https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/EMSOUND_2.png", 
                 detailVisuals: [
-                    { label: "Print Detail A", path: "images/EMSOUND_1.png" }
+                    { label: "Print Detail A", path: "https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/EMSOUND_1.png" }
                 ],
-                backgroundImage: 'images/EMSOUND_1.png',
+                backgroundImage: 'https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/EMSOUND_1.png',
                 videoLink: "https://youtu.be/AYm8pYy8168?si=9PiO8BwgpkENOyUY"
             },
             { 
@@ -969,12 +968,12 @@
                 description: "A continuous, non-narrative video loop exploring the saturation and decay of a single color over a long duration. This work acts as a visual anchor, aiming to strip away complexity and focus purely on the sensation of chroma and time.", 
                 type: "Video Loop / Generative Art", 
                 year: "2027",
-                previewImagePath: "images/placeholder-untitled.jpg", 
+                previewImagePath: "https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/placeholder-untitled.jpg", 
                 detailVisuals: [
-                    { label: "Still: Transition", path: "images/placeholder-untitled-a.jpg" }, 
-                    { label: "Setup: Projection Environment", path: "images/placeholder-untitled-b.jpg" }
+                    { label: "Still: Transition", path: "https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/placeholder-untitled-a.jpg" }, 
+                    { label: "Setup: Projection Environment", path: "https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/placeholder-untitled-b.jpg" }
                 ],
-                backgroundImage: 'images/placeholder-bg-untitled.jpg' 
+                backgroundImage: 'https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/placeholder-bg-untitled.jpg' 
             }
         ];
         
@@ -1673,10 +1672,10 @@ The flames burned more and more, and their figures twisted and rose in the flame
             // ** 优化后的帖子数据，统一使用 imagePath **
             const posts = [
                 // 路径已修正 (Base URL 会处理开头的斜杠)
-                { date: "Dec 01, 2025", time: "14:30", type: "Image/Text", content: "The paramecium number on the road lives my fake Big Bang of the universe.", imagePath: "images/boom.png" }, 
+                { date: "Dec 01, 2025", time: "14:30", type: "Image/Text", content: "The paramecium number on the road lives my fake Big Bang of the universe.", imagePath: "https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/boom.png" }, 
                 { date: "Nov 28, 2025", time: "10:00", type: "Text", content: "The world is not purely black or white. Keep asking until the fervor fades away. Wait for the weather to clear before deciding to return to the rafting excursion. It's as if we're eagerly awaiting a holiday that's bound to come." },
-                { date: "Nov 15, 2025", time: "18:45", type: "Video Still", content: "The World to Me.", imagePath: "images/theworldtome_2.jpeg" },
-                { date: "Oct 22, 2025", time: "12:00", type: "Object", content: "The shape of ash...the relic of a city.", imagePath: "images/ICEGROUP_2.png" },
+                { date: "Nov 15, 2025", time: "18:45", type: "Video Still", content: "The World to Me.", imagePath: "https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/theworldtome_2.jpeg" },
+                { date: "Oct 22, 2025", time: "12:00", type: "Object", content: "The shape of ash...the relic of a city.", imagePath: "https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/ICEGROUP_2.png" },
             ];
 
             const postHtml = posts.map((p, index) => `
@@ -1818,19 +1817,19 @@ The flames burned more and more, and their figures twisted and rose in the flame
                     name: "Cigarette earrings", 
                     price: "15 RMB", 
                     caption: "I collect the cigarette butts I've smoked and use resin to make them into earrings.",
-                    imagePath: "images/STORE_earings.jpg" // 示例路径
+                    imagePath: "https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/STORE_earings.jpg" // 示例路径
                 },
                 { 
                     name: "ICE CUBE", 
                     price: "8 RMB", 
                     caption: "Small ice cubes tring to keep the shape of ash.",
-                    imagePath: "images/STORE_ICE_3.jpg" // 示例路径
+                    imagePath: "https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/STORE_ICE_3.jpg" // 示例路径
                 },
                 { 
                     name: "Stillness Object (Hand-cast Resin)", 
                     price: "5 RMB", 
                     caption: "Use resin to preserve pigments or other small items as archives.",
-                    imagePath: "images/STORE_BG_ICEGROUP_1.png" // 示例路径
+                    imagePath: "https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/STORE_BG_ICEGROUP_1.png" // 示例路径
                 },
             ];
 
@@ -1873,7 +1872,7 @@ The flames burned more and more, and their figures twisted and rose in the flame
                     <div class="about-inner reveal">
                         <div class="about-content">
                             <div class="artist-portrait">
-                                <img src="images/portrait_xinran_orange.jpg" alt="Cao Xinran Portrait" style="object-fit: cover; width: 100%; height: 100%; display: block;">
+                                <img src="https://github.com/caoxinran119/Xinran_online_portfolio/blob/main/images/portrait_xinran_orange.jpg" alt="Cao Xinran Portrait" style="object-fit: cover; width: 100%; height: 100%; display: block;">
                             </div>
 
                             <div class="statement-text">
