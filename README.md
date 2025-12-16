@@ -389,7 +389,7 @@
         
         /* New style for the actual poem/text */
         .text-content-body {
-            max-width: 65ch;
+            max-width: 50ch;
             font-family: var(--font-serif);
             font-size: 1.2rem;
             font-weight: 300;
@@ -538,7 +538,7 @@
         }
 
         .journal-container {
-            max-width: 65ch;
+            max-width: 50ch;
             width: 100%;
         }
 
@@ -1566,7 +1566,7 @@ The flames burned more and more, and their figures twisted and rose in the flame
                             A digital media artist tracing the poetics of memory and the everyday.
                         </h1>
                     </div>
-                    <div class="scroll-indicator">Scroll down</div>
+                    <div class="scroll-indicator"></div>
                 </section>
             `;
         }
@@ -1761,7 +1761,7 @@ The flames burned more and more, and their figures twisted and rose in the flame
                         <span class="entry-date" style="display:block; margin-bottom: 0.5rem;">${entry.date}</span>
                         <h3 style="font-size: 3rem; font-style: italic;">${entry.title}</h3>
                     </div>
-                    <div class="detail-body" style="max-width: 65ch; margin-top: 3rem;">
+                    <div class="detail-body" style="max-width: 50ch; margin-top: 3rem;">
                         <p class="p-serif">
                             // Journal Abstract: ${entry.content.substring(0, 150)}...
                         </p>

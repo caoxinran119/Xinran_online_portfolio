@@ -14,8 +14,8 @@
             --border-color: #333333;
             --accent-color: #ffffff;
             
-            --font-serif: 'Arial', Helvetica, sans-serif; /* Changed to Arial */
-            --font-sans: 'Arial', Helvetica, sans-serif; /* Changed to Arial */
+            --font-serif: 'Arial', Helvetica, sans-serif;
+            --font-sans: 'Arial', Helvetica, sans-serif;
         }
 
         * {
@@ -37,7 +37,7 @@
             overflow-x: hidden;
         }
 
-        /* --- 优化后的: Main Background Image Container (实现淡入淡出转场) --- */
+        /* --- Main Background Image Container --- */
         .main-bg-image {
             position: fixed;
             top: 0;
@@ -48,27 +48,16 @@
             background-position: center;
             background-attachment: fixed;
             z-index: 0; 
-            /* 调整 1/3：非 Home 页面的默认/基础透明度提升到 0.25 */
             opacity: 0.25; 
-            /* 调整 2/3：降低默认滤镜强度，使图片更容易被看到 */
             filter: grayscale(50%) brightness(0.7); 
-            /* 关键：只对 opacity 和 filter 进行过渡，时间设置为 0.5s */
             transition: opacity 0.5s ease, filter 0.5s ease, background-image 0s;
         }
 
-        /* NEW: Home 页面更亮的背景样式 */
         .home-bg-filter {
-            /* 提高透明度，使图片更可见 */
-            opacity: 0.8 !important; /* Home 页面使用更高的透明度 */
-            /* 降低灰度和亮度，使图片颜色和细节更清晰 */
+            opacity: 0.8 !important; 
             filter: grayscale(30%) brightness(0.7) !important; 
         }
         
-        /* --- Noise Overlay (已移除) --- */
-        .noise-overlay {
-            display: none; /* 移除噪点覆盖层 */
-        }
-
         /* --- Typography --- */
         h1, h2, h3 {
             font-weight: 300;
@@ -83,7 +72,6 @@
             color: var(--text-muted);
         }
         
-        /* Secondary text style for English bodies/captions */
         .en-text, .project-info span, .feed-type {
             font-family: var(--font-sans);
             color: #999;
@@ -256,10 +244,10 @@
             50% { opacity: 0.7; }
         }
 
-        /* --- WORKS (New Split View) --- */
+        /* --- WORKS (Index) --- */
         #works {
             min-height: 100vh;
-            align-items: center; /* Center the works-container */
+            align-items: center; 
         }
 
         .works-container {
@@ -271,7 +259,7 @@
         }
 
         .works-index {
-            flex: 0 0 40%; /* Left column takes 40% of the space */
+            flex: 0 0 40%; 
             border-right: 1px solid var(--border-color);
             padding-right: 3rem;
         }
@@ -289,7 +277,7 @@
         }
 
         .works-index button:first-child {
-            border-top: none; /* Remove top border for the first item */
+            border-top: none; 
         }
 
         .works-index button.active-project {
@@ -305,8 +293,7 @@
         .works-index-title {
             font-family: var(--font-serif);
             font-size: 1.8rem;
-            /* REMOVED: font-style: italic; */
-            font-weight: 400; /* Adjusted weight for clarity */
+            font-weight: 400; 
             color: var(--text-muted);
             transition: color 0.3s ease;
         }
@@ -315,12 +302,12 @@
         }
 
         .works-preview {
-            flex: 1; /* Right column takes the remaining space */
+            flex: 1; 
             padding-left: 2rem;
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
-            min-height: 500px; /* Ensure preview area doesn't collapse */
+            min-height: 500px; 
             justify-content: center;
         }
 
@@ -344,8 +331,7 @@
         .preview-caption {
             font-family: var(--font-serif);
             font-size: 1.5rem;
-            /* REMOVED: font-style: italic; */
-            font-weight: 400; /* Adjusted weight for clarity */
+            font-weight: 400; 
             color: var(--text-color);
             margin-bottom: 1.5rem;
         }
@@ -358,7 +344,7 @@
             align-items: center;
             justify-content: center;
             border: 1px solid var(--border-color);
-            overflow: hidden; /* To contain the image */
+            overflow: hidden; 
         }
         /* Make image fill the thumbnail container */
         .preview-thumbnail img, .detail-visual img {
@@ -368,8 +354,139 @@
             display: block;
         }
         
-        /* --- PROJECT DETAIL / FRAGMENT DETAIL / TEXT VIEW --- */
-        #project-detail, #fragment-detail, #fragment-section-view {
+        /* --- PROJECT DETAIL (NEW) --- */
+        
+        #project-detail {
+            max-width: 100%; 
+            padding: 8rem 3rem;
+            margin: 0;
+        }
+
+        .project-split-view {
+            display: flex;
+            gap: 4rem;
+            width: 100%;
+            align-items: flex-start;
+        }
+
+        /* 左侧：视觉区域 (约占2/3) */
+        .visual-col {
+            flex: 0 0 50%;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* 右侧：文字区域 (约占1/3) */
+        .text-col {
+            flex: 1;
+            position: sticky;
+            top: 6rem; 
+        }
+
+        /* Gallery Wrapper */
+        .gallery-wrapper {
+            width: 100%;
+            position: relative;
+            background-color: #1a1a1a;
+            border: 1px solid var(--border-color);
+            aspect-ratio: 16/9;
+            overflow: hidden;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+
+        /* 鼠标移到右侧出现的交互层 */
+        .gallery-nav-overlay {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            background: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 100%);
+        }
+
+        .gallery-nav-overlay:hover {
+            opacity: 1;
+        }
+
+        .gallery-arrow {
+            color: #fff;
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.9rem;
+            background: rgba(0,0,0,0.5);
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .image-counter {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.7);
+            background: rgba(0,0,0,0.5);
+            padding: 0.2rem 0.5rem;
+            pointer-events: none;
+        }
+
+        /* Youtube 视频容器 */
+        .video-container {
+            width: 100%;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            border: 1px solid var(--border-color);
+            background: #000;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* 文字区域样式 */
+        .project-title {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+            line-height: 1.1;
+        }
+        
+        .project-meta-info {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        /* --- FRAGMENT DETAIL / TEXT VIEW --- */
+        #fragment-detail, #fragment-section-view {
             max-width: 1000px;
             margin: 0 auto;
         }
@@ -382,18 +499,17 @@
             font-size: 3rem;
             font-weight: 300;
             margin-bottom: 0.5rem;
-            /* REMOVED: font-style: italic; */
-            font-weight: 400; /* Adjusted weight for clarity */
+            font-weight: 400; 
         }
         
         /* New style for the actual poem/text */
         .text-content-body {
-            max-width: 65ch;
+            max-width: 50ch;
             font-family: var(--font-serif);
             font-size: 1.2rem;
             font-weight: 300;
-            line-height: 1.8; /* Slightly adjusted line height for poetry/prose */
-            white-space: pre-wrap; /* Preserve line breaks and spaces */
+            line-height: 1.8; 
+            white-space: pre-wrap; 
         }
         .text-content-body pre {
             font-family: var(--font-serif);
@@ -403,7 +519,7 @@
             color: var(--text-color);
             margin: 0;
             padding: 0;
-            white-space: pre-wrap; /* Ensure text wraps */
+            white-space: pre-wrap; 
         }
 
         .detail-body {
@@ -423,7 +539,7 @@
             align-items: center;
             justify-content: center;
             border: 1px solid var(--border-color);
-            overflow: hidden; /* To contain the image */
+            overflow: hidden; 
         }
         
         .back-button {
@@ -489,7 +605,7 @@
 
         .feed-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Default to 3 columns */
+            grid-template-columns: repeat(3, 1fr); 
             gap: 2rem;
             width: 100%;
         }
@@ -498,7 +614,7 @@
             background-color: var(--bg-secondary);
             border: 1px solid rgba(255,255,255,0.05);
             padding: 1.5rem;
-            margin-bottom: 0; /* Removed vertical margin for grid layout */
+            margin-bottom: 0; 
             transition: background-color 0.3s ease;
         }
         
@@ -521,7 +637,7 @@
             justify-content: center;
             border: 1px solid var(--border-color);
             border-radius: 2px;
-            overflow: hidden; /* Ensure image fits */
+            overflow: hidden; 
         }
         /* New rule for images inside the placeholder */
         .feed-visual-placeholder img {
@@ -537,7 +653,7 @@
         }
 
         .journal-container {
-            max-width: 65ch;
+            max-width: 50ch;
             width: 100%;
         }
 
@@ -581,8 +697,7 @@
             color: var(--text-color);
             line-height: 1.2;
             text-align: left;
-            /* REMOVED: font-style: italic; */
-            font-weight: 400; /* Adjusted weight for clarity */
+            font-weight: 400; 
         }
 
         .read-more {
@@ -770,7 +885,7 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             .feed-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 columns for tablet */
+                grid-template-columns: repeat(2, 1fr); 
             }
             .about-content {
                 flex-direction: column;
@@ -798,7 +913,7 @@
                 font-size: 1.8rem;
             }
             .store-grid, .feed-grid {
-                grid-template-columns: 1fr; /* 1 column for mobile */
+                grid-template-columns: 1fr; 
             }
         }
     </style>
@@ -820,29 +935,27 @@
     </nav>
 
     <main id="content">
-        </main>
+    </main>
 
     <footer>
         &copy; Cao Xinran. All rights reserved.
     </footer>
 
     <script>
-        // --- Global variables for background cycling ---
+        // --- Global variables ---
         let homeBackgroundCycleInterval = null;
         let currentHomeBgIndex = 0;
-        
-        // --- Core Variables Initialization ---
         const contentDiv = document.getElementById('content');
-        const bgDiv = document.getElementById('main-background'); // 获取新增的背景图元素
+        const bgDiv = document.getElementById('main-background');
         let currentPage = 'home';
+        
+        // ** 作品展示图片索引管理 (来自代码 1) **
+        let currentProjectVisualIndex = 0;
 
         // =======================================================
-        // ========== 1. 背景图路径配置 (Page Backgrounds) ==========
+        // ========== 1. 背景图路径配置 (LFS CDN 绝对路径修复) ==========
         // =======================================================
-        
-        // 替换以下路径为您放在 caoxinranphoto/ 文件夹中的实际背景图文件名
         const backgroundImages = {
-            // 🚨 路径已修正为相对路径，用于 Live Server 调试和 Pages 部署
             'home': [
                 'https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/FLAG_exh7.jpg',    
                 'https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/FF_3.jpg',    
@@ -850,8 +963,6 @@
                 'https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/NEO_3.jpg',    
                 'https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/MN_riverside.png'     
             ],
-            // 其他页面的单张背景图
-            // 路径已全部修正为 https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/ 文件夹 (假设 bg-feed/bg-store 也在 images 文件夹中)
             'works': 'https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/back.png',    
             'feed': 'https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/bg-feed.jpg',    
             'writing': 'https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/backforwriting.jpg', 
@@ -860,10 +971,8 @@
         };
 
         // =======================================================
-        // ========== 2. 作品数据及图片路径 (Project Data) ==========
+        // ========== 2. 作品数据及图片路径 (LFS CDN 绝对路径修复) ==========
         // =======================================================
-        
-        // ** 路径已修正为相对路径
         const projectsData = [
             { 
                 id: "project-01", 
@@ -872,15 +981,14 @@
                 description: "This work traces my return to the vacant lot where my elementary school once stood, rebuilding its vanished architecture through an AR excavator that digs up structures no longer there. 我的小学已经变成废墟。在它曾经所在的空地上,一台挖掘机正在挖掘已经消失的建筑。", 
                 type: "Video / AR Installation", 
                 year: "2025",
-                // Works 索引页的预览图 (鼠标悬停时右侧显示)
                 previewImagePath: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/FF_2.jpg", 
-                // 作品详情页的配图
                 detailVisuals: [
                     { label: "Still 1: Dust Motes", path: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/FF_3.jpg" }, 
                     { label: "Still 1: Dust Motes", path: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/FF_2.jpg" }, 
+                    { label: "Still 1: Dust Motes", path: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/FF_5.jpg" }, 
+                    { label: "Still 1: Dust Motes", path: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/FF_1.jpg" }, 
                     { label: "Still 2: Empty Hallway", path: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/FF_4.jpg" } 
                 ],
-                // 作品详情页的背景图
                 backgroundImage: 'https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/FF_1.png', 
                 videoLink: "https://youtu.be/CEncCsvKKGw?si=lkHh8o9Xpr9zMnDd" 
             },
@@ -894,7 +1002,9 @@
                 previewImagePath: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/NEO_1.png", 
                 detailVisuals: [
                     { label: "Photo 1: Backs to each other", path: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/NEO_2.png" }, 
-                    { label: "Photo 1: Backs to each other", path: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/NEO_9.jpg" }, 
+                    { label: "Photo 1: Backs to each other", path: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/NEO_12.jpg" }, 
+                    { label: "Photo 1: Backs to each other", path: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/NEO_10.jpg" }, 
+                    { label: "Photo 1: Backs to each other", path: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/NEO_11.jpg" }, 
                     { label: "Photo 1: Backs to each other", path: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/NEO_5.jpg" }, 
                     { label: "Photo 2: Distance and Shadow", path: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/NEO_4.jpg" } 
                 ],
@@ -911,6 +1021,9 @@
                 previewImagePath: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/FLAG_exh3.jpg", 
                 detailVisuals: [
                     { label: "Object View: Resin Cast", path: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/FLAG_walking.jpg" }, 
+                    { label: "Object View: Resin Cast", path: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/FLAG_exh1.jpg" }, 
+                    { label: "Object View: Resin Cast", path: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/FLAG_exh7.jpg" }, 
+                    { label: "Object View: Resin Cast", path: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/FLAG_explosion" }, 
                     { label: "Text Detail: Embedded Fragment", path: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/FLAG_whisle.png" } 
                 ],
                 backgroundImage: 'https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/FLAG_explosion.png', 
@@ -920,7 +1033,7 @@
                 id: "project-04", 
                 title: "River·Train·Flame", 
                 caption: "River·Train·Flame",
-                description: "Centered on a fictional encounter between Chinese poet Hai Zi and American musician Kurt Cobain, this work begins at the moment of their suicides and follows the imagined dialogue that unfolds between them across time, space, and culture. 这部作品以中国诗人海子和美国音乐家Kurt·Cobain的一次虚构相遇为中心, 从他们自杀的那一刻开始, 沿着他们之间跨越时间、空间和文化的想象对话展开。", 
+                description: "Centered on a fictional encounter between Chinese poet Hai Zi and American musician Kurt Cobain, this work begins at the moment of their suicides and follows the imagined dialogue that unfolds between them across time, space, and culture. <pre>这部作品以中国诗人海子和美国音乐家Kurt·Cobain的一次虚构相遇为中心, 从他们自杀的那一刻开始, <pre>沿着他们之间跨越时间、空间和文化的想象对话展开。", 
                 type: "Video", 
                 year: "2024",
                 previewImagePath: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/MN_train_river_.png", 
@@ -928,6 +1041,7 @@
                     { label: "Screen Capture: Digital Etching", path: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/MN_kurtcobain_empty.png" }, 
                     { label: "Screen Capture: Digital Etching", path: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/MN_Dionysus.png" }, 
                     { label: "Screen Capture: Digital Etching", path: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/MN_stand_by_the_river.png" }, 
+                    { label: "Screen Capture: Digital Etching", path: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/MN_MN_train_river_.png" }, 
                     { label: "Text Fragment: Overheard Line", path: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/MN_windowview.png" } 
                 ],
                 backgroundImage: 'https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/MN_railway.png', 
@@ -943,6 +1057,7 @@
                 previewImagePath: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/The Lung of Algorithms_preview.png", 
                 detailVisuals: [
                     { label: "Diagram: System Architecture", path: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/The Lung of Algorithms_total.png" }, 
+                    { label: "Diagram: System Architecture", path: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/The Lung of Algorithms_white.png" }, 
                     { label: "Still: Mechanical Element", path: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/The Lung of Algorithms_black.png" }
                 ],
                 backgroundImage: 'https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/The Lung of Algorithms_Xray.jpg' 
@@ -962,9 +1077,10 @@
                 videoLink: "https://youtu.be/AYm8pYy8168?si=9PiO8BwgpkENOyUY"
             },
         ];
-        
 
-        // ** Log 片段数据结构 (保持不变) **
+        // =======================================================
+        // ========== 3. Log 片段数据 (内容保持完整) ==========
+        // =======================================================
         const fragmentsData = [
             { 
                 id: "fragment-01", 
@@ -1349,7 +1465,7 @@ He also saw women。 The woman sat quietly on a white plastic chair listening to
 
 The underground passage is a gallery where no paintings are exhibited.
 
-What is exhibited here is not painting, but memory and illusion. The reflected water of the Yongdao flows everywhere, giving people the illusion that their lives were once tightly intertwined. Illusions invade reality through memory. The stagnant water reflects the thin figure of the man, like white wax oil floating on the surface of the water.
+What is exhibited here is not painting, but memory and illusion. The reflected water of the Yongdao flows everywhere, giving people的 illusion that their lives were once tightly intertwined. Illusions invade reality through memory. The stagnant water reflects the thin figure of the man, like white wax oil floating on the surface of the water.
 
 The man walked out of the passage to the exhibition hall and stopped in front of a painting. He reached out and gently removed it from the wall, then used a knife to remove the frame, rolled up the canvas and stuffed it into a canvas bag.
 
@@ -1435,32 +1551,145 @@ The man took off his rucksack and took the woman's arm to invite her to dance. N
 
 The flames burned more and more, and their figures twisted and rose in the flames, as if他们 were freeGenie of the night. In dance, everything lost will be found, and all chases will find the answer.
 `
-                    }
-                ]
-            },
-        ];
+                    }
+                ]
+            },
+        ];
 
-        const pageDescriptions = {
-            home: { title: "Home", content: renderHome },
-            works: { title: "Works / Projects", content: renderWorks },
-            feed: { title: "Field Notes", content: renderFeed },
-            writing: { title: "Journal & Fragments", content: renderWriting },
-            store: { title: "Small Objects", content: renderStore },
-            about: { title: "Artist Statement", content: renderAbout },
-        };
+        const pageDescriptions = {
+            home: { title: "Home", content: renderHome },
+            works: { title: "Works / Projects", content: renderWorks },
+            feed: { title: "Field Notes", content: renderFeed },
+            writing: { title: "Journal & Fragments", content: renderWriting },
+            store: { title: "Small Objects", content: renderStore },
+            about: { title: "Artist Statement", content: renderAbout },
+        };
 
-        // (Utility Functions, Page Rendering Functions 保持不变)
+        // (Utility Functions, Page Rendering Functions 保持不变)
 
-        // Simple debounce for resize/scroll listeners
-        const debounce = (func, delay) => {
-            let timeout;
-            return function(...args) {
-                clearTimeout(timeout);
-                timeout = setTimeout(() => func.apply(this, args), delay);
-            };
-        };
-        
-        // NEW: Function to update the content of the right-hand preview panel for 'Works'
+        // Simple debounce for resize/scroll listeners
+        const debounce = (func, delay) => {
+            let timeout;
+            return function(...args) {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, args), delay);
+            };
+        };
+        
+        // NEW: Function to update the content of the right-hand preview panel for 'Works'
+        function updateProjectPreview(projectId) {
+            const previewDiv = document.getElementById('works-preview');
+            if (!previewDiv) return;
+
+            const project = projectsData.find(p => p.id === projectId);
+            if (!project) return;
+            
+            // Deactivate all titles
+            document.querySelectorAll('.works-index button').forEach(btn => btn.classList.remove('active-project'));
+            // Activate the current title
+            const activeBtn = document.querySelector(`.works-index button[data-project-id="${projectId}"]`);
+            if (activeBtn) {
+                activeBtn.classList.add('active-project');
+            }
+
+            // --- 编辑点 A：替换预览图占位符 ---
+            // 预览图路径来自 projectsData[n].previewImagePath
+            const previewHtml = `
+                <div class="preview-content show reveal">
+                    <div class="preview-meta">${project.type} | ${project.year}</div>
+                    <div class="preview-thumbnail">
+                        <img src="${project.previewImagePath}" alt="Visual Preview for ${project.title}">
+                    </div>
+                    <p class="preview-caption">${project.caption}</p>
+                    <button class="back-button" onclick="navigate('works/${project.id}')" style="margin-bottom:0;">View Full Details →</button>
+                </div>
+            `;
+            
+            // Clear old content with a fade-out effect for smoothness
+            const oldContent = previewDiv.querySelector('.preview-content');
+            if (oldContent) {
+                oldContent.classList.remove('show');
+                setTimeout(() => {
+                    previewDiv.innerHTML = previewHtml;
+                }, 100); // Wait for fade-out before injecting new content
+            } else {
+                previewDiv.innerHTML = previewHtml;
+            }
+        }
+
+
+        // --- Home Background Cycle Logic (New) ---
+
+        function cycleHomeBackground() {
+            // 确保只有一个定时器在运行
+            if (homeBackgroundCycleInterval) {
+                clearInterval(homeBackgroundCycleInterval);
+            }
+            
+            const images = backgroundImages['home'];
+            if (!images || images.length === 0) return;
+
+            // 首次设置背景图
+            bgDiv.style.backgroundImage = `url('${images[currentHomeBgIndex]}')`;
+            bgDiv.classList.add('home-bg-filter'); 
+
+            homeBackgroundCycleInterval = setInterval(() => {
+                // 计算下一张图的索引
+                currentHomeBgIndex = (currentHomeBgIndex + 1) % images.length;
+                const nextImagePath = images[currentHomeBgIndex];
+
+                // 1. 快速淡出当前图片 (利用 CSS transition: opacity 1.5s ease)
+                bgDiv.style.opacity = 0; 
+                
+                // 2. 在淡出过程中（1.5s 后）更换图片 URL
+                setTimeout(() => {
+                    // Preload next image (optional but recommended)
+                    const tempImg = new Image();
+                    tempImg.onload = () => {
+                        bgDiv.style.backgroundImage = `url('${nextImagePath}')`;
+                        // 3. 淡入新图片 (恢复 Home 页面的高透明度)
+                        bgDiv.style.opacity = 0.4; // 对应 .home-bg-filter 的 opacity 值
+                    };
+                    tempImg.src = nextImagePath;
+
+                }, 1500); // 必须大于或等于 CSS transition 的时间 (1.5s)
+                
+            }, 6000); // 6秒切换一次 (1.5s 淡出 + 1.5s 淡入 + 3s 显示)
+        }
+
+        // NEW: 切换作品图片 (来自代码 1)
+        function switchProjectImage(projectId) {
+            const project = projectsData.find(p => p.id === projectId);
+            if (!project || !project.detailVisuals || project.detailVisuals.length === 0) return;
+            
+            // 增加索引
+            currentProjectVisualIndex = (currentProjectVisualIndex + 1) % project.detailVisuals.length;
+            
+            const imgElement = document.getElementById('active-project-img');
+            const counterElement = document.getElementById('project-img-counter');
+            
+            if (imgElement) {
+                // 简单的淡出淡入效果
+                imgElement.style.opacity = 0.5;
+                setTimeout(() => {
+                    imgElement.src = project.detailVisuals[currentProjectVisualIndex].path;
+                    imgElement.onload = () => { imgElement.style.opacity = 1; };
+                }, 100);
+            }
+            
+            if (counterElement) {
+                counterElement.innerText = `${currentProjectVisualIndex + 1} / ${project.detailVisuals.length}`;
+            }
+        }
+
+        // NEW: 提取 YouTube ID (来自代码 1)
+        function getYouTubeVideoId(url) {
+            if (!url) return null;
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+            const match = url.match(regExp);
+            return (match && match[2].length === 11) ? match[2] : null;
+        }
+
         function updateProjectPreview(projectId) {
             const previewDiv = document.getElementById('works-preview');
             if (!previewDiv) return;
@@ -1468,16 +1697,10 @@ The flames burned more and more, and their figures twisted and rose in the flame
             const project = projectsData.find(p => p.id === projectId);
             if (!project) return;
             
-            // Deactivate all titles
             document.querySelectorAll('.works-index button').forEach(btn => btn.classList.remove('active-project'));
-            // Activate the current title
             const activeBtn = document.querySelector(`.works-index button[data-project-id="${projectId}"]`);
-            if (activeBtn) {
-                activeBtn.classList.add('active-project');
-            }
+            if (activeBtn) { activeBtn.classList.add('active-project'); }
 
-            // --- 编辑点 A：替换预览图占位符 ---
-            // 预览图路径来自 projectsData[n].previewImagePath
             const previewHtml = `
                 <div class="preview-content show reveal">
                     <div class="preview-meta">${project.type} | ${project.year}</div>
@@ -1489,59 +1712,16 @@ The flames burned more and more, and their figures twisted and rose in the flame
                 </div>
             `;
             
-            // Clear old content with a fade-out effect for smoothness
             const oldContent = previewDiv.querySelector('.preview-content');
             if (oldContent) {
                 oldContent.classList.remove('show');
-                setTimeout(() => {
-                    previewDiv.innerHTML = previewHtml;
-                }, 100); // Wait for fade-out before injecting new content
+                setTimeout(() => { previewDiv.innerHTML = previewHtml; }, 100);
             } else {
                 previewDiv.innerHTML = previewHtml;
             }
         }
-
-
-        // --- Home Background Cycle Logic (New) ---
-
-        function cycleHomeBackground() {
-            // 确保只有一个定时器在运行
-            if (homeBackgroundCycleInterval) {
-                clearInterval(homeBackgroundCycleInterval);
-            }
-            
-            const images = backgroundImages['home'];
-            if (!images || images.length === 0) return;
-
-            // 首次设置背景图
-            bgDiv.style.backgroundImage = `url('${images[currentHomeBgIndex]}')`;
-            bgDiv.classList.add('home-bg-filter'); 
-
-            homeBackgroundCycleInterval = setInterval(() => {
-                // 计算下一张图的索引
-                currentHomeBgIndex = (currentHomeBgIndex + 1) % images.length;
-                const nextImagePath = images[currentHomeBgIndex];
-
-                // 1. 快速淡出当前图片 (利用 CSS transition: opacity 1.5s ease)
-                bgDiv.style.opacity = 0; 
-                
-                // 2. 在淡出过程中（1.5s 后）更换图片 URL
-                setTimeout(() => {
-                    // Preload next image (optional but recommended)
-                    const tempImg = new Image();
-                    tempImg.onload = () => {
-                        bgDiv.style.backgroundImage = `url('${nextImagePath}')`;
-                        // 3. 淡入新图片 (恢复 Home 页面的高透明度)
-                        bgDiv.style.opacity = 0.4; // 对应 .home-bg-filter 的 opacity 值
-                    };
-                    tempImg.src = nextImagePath;
-
-                }, 1500); // 必须大于或等于 CSS transition 的时间 (1.5s)
-                
-            }, 6000); // 6秒切换一次 (1.5s 淡出 + 1.5s 淡入 + 3s 显示)
-        }
         
-        // Render Functions (保持不变)
+        // --- Render Functions (恢复旧版所有页面渲染) ---
 
         function renderHome() {
             return `
@@ -1552,7 +1732,7 @@ The flames burned more and more, and their figures twisted and rose in the flame
                             A digital media artist tracing the poetics of memory and the everyday.
                         </h1>
                     </div>
-                    <div class="scroll-indicator">Scroll down</div>
+                    <div class="scroll-indicator"></div>
                 </section>
             `;
         }
@@ -1599,55 +1779,53 @@ The flames burned more and more, and their figures twisted and rose in the flame
             `;
         }
         
+        // NEW: renderProjectDetails (Works 详情页 - 包含图片轮播和视频嵌入)
         function renderProjectDetails(projectId) {
             const project = projectsData.find(p => p.id === projectId);
-
-            if (!project) {
-                return `<section id="project-detail"><p class="p-serif">Project not found.</p></section>`;
-            }
+            if (!project) { return `<section id="project-detail"><p class="p-serif">Project not found.</p></section>`; }
             
-            const visualHtml = project.detailVisuals.map((visual, index) => `
-                <div class="detail-visual reveal" style="transition-delay: ${index * 0.15}s;">
-                    <img src="${visual.path}" alt="${visual.label}">
+            // 重置图片索引
+            currentProjectVisualIndex = 0;
+            const firstImage = project.detailVisuals && project.detailVisuals.length > 0 ? project.detailVisuals[0].path : '';
+            const totalImages = project.detailVisuals ? project.detailVisuals.length : 0;
+            
+            // 处理 YouTube 嵌入
+            const videoId = getYouTubeVideoId(project.videoLink);
+            const videoEmbedHtml = videoId ? `
+                <div class="video-container reveal" style="transition-delay: 0.2s;">
+                    <iframe src="https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-            `).join('');
-
-            // --- 视频链接逻辑 ---
-            // 使用 project.videoLink 字段，如果存在则渲染按钮
-            const videoLinkHtml = project.videoLink ? `
-                <a href="${project.videoLink}" target="_blank" style="
-                    font-family: var(--font-sans); 
-                    font-size: 0.9rem; 
-                    text-transform: uppercase; 
-                    letter-spacing: 0.05em; 
-                    color: var(--text-color); 
-                    margin-top: 1.5rem; 
-                    padding: 0.75rem 1.5rem; 
-                    border: 1px solid var(--border-color); 
-                    background-color: var(--bg-secondary); 
-                    display: inline-block; 
-                    transition: background-color 0.3s ease, border-color 0.3s ease;
-                    text-decoration: none;
-                ">
-                    Watch Video / Documentation →
-                </a>
             ` : '';
-            // --- 结束视频链接逻辑 ---
 
             return `
                 <section id="project-detail" class="reveal">
                     <button class="back-button" onclick="navigate('works')">← Back to Projects Index</button>
-                    <div class="detail-header">
-                        <h2 style="margin-bottom: 0.5rem; color: var(--text-color);">${project.type} | ${project.year}</h2>
-                        <h3>${project.title}</h3>
-                    </div>
-                    <div class="detail-body">
-                        <div class="detail-description">
-                            <p class="p-serif">${project.description}</p>
-                            ${videoLinkHtml} 
+                    
+                    <div class="project-split-view">
+                        <div class="visual-col">
+                            ${firstImage ? `
+                            <div class="gallery-wrapper reveal" style="transition-delay: 0.1s;">
+                                <img id="active-project-img" class="gallery-image" src="${firstImage}" alt="${project.title} detail">
+                                
+                                <div class="image-counter" id="project-img-counter">1 / ${totalImages}</div>
+                                
+                                <div class="gallery-nav-overlay" onclick="switchProjectImage('${project.id}')">
+                                    <div class="gallery-arrow">Next Image →</div>
+                                </div>
+                            </div>
+                            ` : ''}
+                            
+                            ${videoEmbedHtml}
                         </div>
-                        <div class="detail-media">
-                            ${visualHtml}
+
+                        <div class="text-col reveal" style="transition-delay: 0.3s;">
+                            <div class="project-meta-info">
+                                <span>${project.type}</span> | <span>${project.year}</span>
+                            </div>
+                            <h2 class="project-title">${project.title}</h2>
+                            <p class="p-serif" style="margin-top: 2rem;">
+                                ${project.description}
+                            </p>
                         </div>
                     </div>
                 </section>
@@ -1655,9 +1833,8 @@ The flames burned more and more, and their figures twisted and rose in the flame
         }
 
         function renderFeed() {
-            // ** 优化后的帖子数据，统一使用 imagePath **
             const posts = [
-                { date: "Dec 01, 2025", time: "14:30", type: "Image/Text", content: "The paramecium number on the road lives my fake Big Bang of the universe.", imagePath: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/boom.png" }, 
+                { date: "Dec 01, 2025", time: "14:30", type: "Image/Text", content: "The paramecium number on the road lives my fake Big Bang of the universe.", imagePath: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/boom.png" },    
                 { date: "Nov 28, 2025", time: "10:00", type: "Text", content: "The world is not purely black or white. Keep asking until the fervor fades away. Wait for the weather to clear before deciding to return to the rafting excursion. It's as if we're eagerly awaiting a holiday that's bound to come." },
                 { date: "Nov 15, 2025", time: "18:45", type: "Video Still", content: "The World to Me.", imagePath: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/theworldtome_2.jpeg" },
                 { date: "Oct 22, 2025", time: "12:00", type: "Object", content: "The shape of ash...the relic of a city.", imagePath: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/ICEGROUP_2.png" },
@@ -1718,7 +1895,6 @@ The flames burned more and more, and their figures twisted and rose in the flame
             `;
         }
 
-        // ** 已修改: 目录按钮导航到三级路由 **
         function renderWritingDetails(fragmentId) {
             const entry = fragmentsData.find(f => f.id === fragmentId);
 
@@ -1745,7 +1921,7 @@ The flames burned more and more, and their figures twisted and rose in the flame
                         <span class="entry-date" style="display:block; margin-bottom: 0.5rem;">${entry.date}</span>
                         <h3 style="font-size: 3rem; font-style: italic;">${entry.title}</h3>
                     </div>
-                    <div class="detail-body" style="max-width: 65ch; margin-top: 3rem;">
+                    <div class="detail-body" style="max-width: 50ch; margin-top: 3rem;">
                         <p class="p-serif">
                             // Journal Abstract: ${entry.content.substring(0, 150)}...
                         </p>
@@ -1765,7 +1941,6 @@ The flames burned more and more, and their figures twisted and rose in the flame
             `;
         }
         
-        // ** 新增函数：渲染实际的文本内容 (使用 <pre> 标签保留格式) **
         function renderWritingSection(fragmentId, sectionIndex) {
             const entry = fragmentsData.find(f => f.id === fragmentId);
             const section = entry && entry.sections && entry.sections[sectionIndex];
@@ -1801,19 +1976,19 @@ The flames burned more and more, and their figures twisted and rose in the flame
                     name: "Cigarette earrings", 
                     price: "15 RMB", 
                     caption: "I collect the cigarette butts I've smoked and use resin to make them into earrings.",
-                    imagePath: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/STORE_earings.jpg" // 示例路径
+                    imagePath: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/STORE_earings.jpg" 
                 },
                 { 
                     name: "ICE CUBE", 
                     price: "8 RMB", 
                     caption: "Small ice cubes tring to keep the shape of ash.",
-                    imagePath: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/STORE_ICE_3.jpg" // 示例路径
+                    imagePath: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/STORE_ICE_3.jpg" 
                 },
                 { 
                     name: "Stillness Object (Hand-cast Resin)", 
                     price: "5 RMB", 
                     caption: "Use resin to preserve pigments or other small items as archives.",
-                    imagePath: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/STORE_BG_ICEGROUP_1.png" // 示例路径
+                    imagePath: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/STORE_BG_ICEGROUP_1.png" 
                 },
             ];
 
@@ -1885,7 +2060,7 @@ The flames burned more and more, and their figures twisted and rose in the flame
             `;
         }
 
-        // --- Core Navigation and Init (Updated for visible Works/Writing background) ---
+        // --- Core Navigation and Init ---
 
         function navigate(path, skipHistory = false) {
             const parts = path.split('/');
@@ -1893,7 +2068,6 @@ The flames burned more and more, and their figures twisted and rose in the flame
             const subKey = parts[1]; // 'project-01', 'fragment-02', etc.
             const subSubKey = parts[2]; // '0', '1', '2' (section index)
 
-            // 检查路由是否有效
             const isProjectRoute = (pageKey === 'works' && subKey);
             const isFragmentIndexRoute = (pageKey === 'writing' && subKey && !subSubKey);
             const isFragmentSectionRoute = (pageKey === 'writing' && subKey && subSubKey);
@@ -1911,7 +2085,6 @@ The flames burned more and more, and their figures twisted and rose in the flame
             // Update active state in nav links
             document.querySelectorAll('.nav-links button').forEach(btn => {
                 btn.classList.remove('nav-highlight');
-                // Highlight the parent navigation item
                 const btnText = btn.innerText.toLowerCase();
                 if (btnText === pageKey || 
                     (pageKey === 'works' && btnText === 'works') || 
@@ -1924,19 +2097,17 @@ The flames burned more and more, and their figures twisted and rose in the flame
             let contentHtml = '';
             let titleText = '';
             let targetBgPath = null;
-            // 调整 3/3：Works 和 Writing 页面使用更亮的背景设置
-            let targetOpacity = 0.3; // Writing 页的背景透明度
-            let targetFilter = 'grayscale(60%) brightness(0.85)'; // Writing 页的背景滤镜更柔和
+            let targetOpacity = 0.3; 
+            let targetFilter = 'grayscale(60%) brightness(0.85)'; 
 
             if (pageKey === 'home') {
                 targetOpacity = 0.4;
                 targetFilter = 'grayscale(30%) brightness(0.5)';
-                // 启动 Home 幻灯片循环 (它自己会设置背景图和滤镜类)
+                contentHtml = renderHome(); // 渲染 Home
             }
             else if (pageKey === 'works' || isProjectRoute) {
-                // Works 索引页和详情页
-                targetOpacity = 0.25; // Works 页的背景透明度
-                targetFilter = 'grayscale(80%) brightness(0.8)'; // Works 页的背景滤镜
+                targetOpacity = 0.25; 
+                targetFilter = 'grayscale(80%) brightness(0.8)'; 
                 if (subKey) {
                     contentHtml = renderProjectDetails(subKey);
                     const project = projectsData.find(p => p.id === subKey);
@@ -1948,103 +2119,74 @@ The flames burned more and more, and their figures twisted and rose in the flame
                     targetBgPath = backgroundImages[pageKey];
                 }
             } else if (pageKey === 'writing' || isFragmentIndexRoute || isFragmentSectionRoute) { 
-                // Writing 索引页、目录页、文本页
-                
                 if (isFragmentSectionRoute) {
-                    // 三级路由：显示具体文本内容
                     contentHtml = renderWritingSection(subKey, subSubKey);
                     const entry = fragmentsData.find(f => f.id === subKey);
                     const sectionTitle = entry && entry.sections[subSubKey] ? entry.sections[subSubKey].title : 'Section';
                     titleText = entry ? `Journal / ${entry.title} / ${sectionTitle}` : 'Journal / Fragment';
-                    targetBgPath = backgroundImages['writing']; // ** 保持背景不变 **
-
+                    targetBgPath = backgroundImages['writing']; 
                 } else if (isFragmentIndexRoute) {
-                    // 二级路由：显示目录页
                     contentHtml = renderWritingDetails(subKey);
                     const entry = fragmentsData.find(f => f.id === subKey);
                     titleText = entry ? `Journal / ${entry.title}` : 'Journal / Fragment';
-                    targetBgPath = backgroundImages['writing']; // ** 保持背景不变 **
+                    targetBgPath = backgroundImages['writing']; 
                 } else {
-                    // 一级路由：显示索引页
                     contentHtml = renderWriting();
                     titleText = pageDescriptions[pageKey].title;
                     targetBgPath = backgroundImages[pageKey];
                 }
             } else {
-                // 处理 feed, store, about 页面
-                targetOpacity = 0.25; // 默认值
-                targetFilter = 'grayscale(70%) brightness(0.7)'; // 默认值
+                targetOpacity = 0.25; 
+                targetFilter = 'grayscale(70%) brightness(0.7)'; 
                 contentHtml = pageDescriptions[pageKey].content();
                 titleText = pageDescriptions[pageKey].title;
                 targetBgPath = backgroundImages[pageKey];
             }
             
-            // --- 核心优化：背景图平滑过渡逻辑 ---
-            // 只有当目标背景图路径与当前背景图路径不同时，才执行淡出/更换/淡入操作
-            // 否则，只确保应用了正确的滤镜/透明度（用于同一页面内子路由切换）
-            
-            const currentBgUrl = bgDiv.style.backgroundImage.slice(5, -2); // Extracts URL without 'url("")'
+            // --- 背景图控制逻辑 ---
+            const currentBgUrl = bgDiv.style.backgroundImage.slice(5, -2); 
             
             if (pageKey === 'home') {
-                // Home 页面有专门的循环逻辑，这里只确保启动它
                 bgDiv.style.filter = targetFilter;
                 bgDiv.style.opacity = targetOpacity;
-                cycleHomeBackground();
-
+                cycleHomeBackground(); // 启动 Home 幻灯片
             } else if (bgDiv && targetBgPath && currentBgUrl !== targetBgPath) {
-                // 1. 淡出当前背景
                 bgDiv.style.opacity = 0;
-                
                 setTimeout(() => {
-                    // 2. 更改背景图 URL 和滤镜
                     bgDiv.style.backgroundImage = `url('${targetBgPath}')`;
                     bgDiv.style.filter = targetFilter;
-                    // 3. 淡入新背景
                     bgDiv.style.opacity = targetOpacity;
-                }, 500); // 使用 CSS 定义的 0.5s 过渡时间
-
+                }, 500); 
             } else if (bgDiv && targetBgPath) {
-                // 如果背景路径相同 (例如，在 'writing' 的子路由之间切换)，确保样式应用但无淡入淡出延迟
                 bgDiv.style.backgroundImage = `url('${targetBgPath}')`;
                 bgDiv.style.filter = targetFilter;
                 bgDiv.style.opacity = targetOpacity;
             }
 
-
-            // Set content and delay the reveal animation
-            // 在替换内容前先清空当前的 reveal 状态
+            // --- 内容渲染和动画 ---
             contentDiv.classList.remove('loaded');
-            
-            // 延迟清空内容，以便旧内容有时间淡出
             setTimeout(() => {
                 contentDiv.innerHTML = contentHtml;
 
-                // Check if we are on the main works index page and initialize the preview panel
                 if (pageKey === 'works' && !subKey && projectsData.length > 0) {
-                    // Delay slightly to ensure all DOM elements are mounted before trying to find and highlight them
-                    setTimeout(() => {
-                        updateProjectPreview(projectsData[0].id);
-                    }, 100);
+                    setTimeout(() => { updateProjectPreview(projectsData[0].id); }, 100);
                 }
 
-                // Trigger reveal animation for general elements
+                // 触发 reveal 动画
                 setTimeout(() => {
                     document.querySelectorAll('.reveal').forEach(el => {
                         el.classList.add('active');
+                        observer.observe(el);
                     });
                 }, 50);
 
                 document.title = `Cao Xinran | ${titleText}`;
                 contentDiv.classList.add('loaded');
-            }, 50); // 极小的延迟来处理内容淡入淡出
-
+            }, 50); 
 
             if (!skipHistory) {
-                // Update URL hash for sharing/back button
                 window.history.pushState({ path: path }, titleText, `#${path}`);
             }
-
-            // Scroll to top on navigation
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         
@@ -2062,7 +2204,7 @@ The flames burned more and more, and their figures twisted and rose in the flame
         window.addEventListener('popstate', (event) => {
             const hash = window.location.hash.substring(1);
             const path = hash || 'home';
-            navigate(path, true); // Skip adding to history again
+            navigate(path, true); 
         });
 
         // Initialize the app
@@ -2072,12 +2214,6 @@ The flames burned more and more, and their figures twisted and rose in the flame
             
             // First navigation to populate the content
             navigate(initialPath); 
-            
-            // Now observe the elements loaded by navigate()
-            // We need a small delay because innerHTML replacement is async
-            setTimeout(() => {
-                document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-            }, 100);
         });
 
     </script>
