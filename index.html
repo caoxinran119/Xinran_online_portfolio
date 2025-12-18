@@ -5,6 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cao Xinran | Digital Media Artist</title>
     <style>
+        /* 确保手机菜单盖在所有东西上面 */
+.mobile-overlay {
+    position: fixed;
+    top: 0;
+    right: -100%; /* 默认藏在右边 */
+    width: 100%;
+    height: 100vh;
+    background: rgba(10, 10, 10, 0.98);
+    z-index: 9999; /* 数值要足够大 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    transition: 0.5s ease-in-out;
+}
+
+/* 激活状态：滑入屏幕 */
+.mobile-overlay.active {
+    right: 0;
+}
+
+/* 手机菜单内的按钮样式 */
+.mobile-overlay button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+}
+
+/* 汉堡图标在手机端的显示逻辑 */
+@media (max-width: 1024px) {
+    .hamburger { display: block !important; }
+    .nav-links { display: none !important; } /* 隐藏电脑端导航 */
+}
         /* --- CSS Variables --- */
         :root {
             --bg-color: #0a0a0a;
@@ -1022,14 +1060,34 @@
                 grid-template-columns: 1fr; 
             }
         }
+
+/* 让汉堡按钮始终保持在最顶层，防止被菜单遮罩盖住无法点击 */
+.hamburger {
+    display: none;      /* 电脑端默认隐藏 */
+    position: relative; /* 确保 z-index 有效 */
+    z-index: 10001;     /* 这个数字必须大于 mobile-overlay 的 9999 */
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 10px;      /* 增加点击区域 */
+}
+
+/* 确保手机端时显示该按钮 */
+@media (max-width: 1024px) {
+    .hamburger {
+        display: block !important;
+    }
+}
+
+
     </style>
 </head>
 <body class="is-loading">
-
     <div id="main-background" class="main-bg-image"></div>
 
     <nav>
         <div class="logo">Cao Xinran</div>
+        
         <div class="nav-links">
             <button onclick="navigate('home')">Home</button>
             <button onclick="navigate('works')">Works</button>
@@ -1039,15 +1097,19 @@
             <button onclick="navigate('about')">About</button>
         </div>
 
-    <button class="hamburger" onclick="toggleMenu()">
-        <span></span><span></span><span></span>
-    </button>
-</nav>
-
-<div class="mobile-overlay" id="mobileMenu">
-    <button onclick="navigate('home'); toggleMenu()">HOME</button>
-    </div>
+        <button class="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </button>
     </nav>
+
+    <div class="mobile-overlay" id="mobileMenu">
+        <button onclick="navigate('home'); toggleMenu()">Home</button>
+        <button onclick="navigate('works'); toggleMenu()">Works</button>
+        <button onclick="navigate('feed'); toggleMenu()">Field Notes</button>
+        <button onclick="navigate('writing'); toggleMenu()">Writing</button>
+        <button onclick="navigate('store'); toggleMenu()">Store</button>
+        <button onclick="navigate('about'); toggleMenu()">About</button>
+    </div>
 
     <main id="content">
     </main>
@@ -1058,6 +1120,12 @@ function toggleMenu() {
     const menu = document.getElementById('mobileMenu');
     if (menu) {
         menu.classList.toggle('active');
+    // 优化：菜单打开时，防止手机网页上下滑动
+        if (menu.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
     }
 }
         // --- Global variables ---
@@ -1120,11 +1188,11 @@ function toggleMenu() {
                 id: "project-02", 
                 title: "NO ONE IS ALLOWED IN_闲人免进", 
                 caption: "NO ONE IS ALLOWED IN_闲人免进", 
-                description: `\nWe encountered a semi-underground space—long, enclosed, and difficult to apprehend at a glance, like a hidden passage.
+                description: `\nPerformers encountered a semi-underground space—long, enclosed, and difficult to apprehend at a glance, like a hidden passage.
 Its posted regulation of “No Entry” became the point of departure for the work No One Is Allowed In.\n我们发现了一个半地下的空间。它幽长、封闭、难以一眼看清，像是一段被隐藏的通道。\n其“禁止入内”的规定，激发出“闲人免进”的主题。
-\nDuring the performance, we established a single rule: whenever two participants encounter one another, they must say “No One Is Allowed In” and immediately reverse their original trajectory.\nThis rule does not serve efficiency or any concrete goal. Instead, it produces interruption, avoidance, and repetition. Bodies are compelled to respond to verbal commands; potential encounters are cancelled, and paths are continuously redirected. Through repeated execution, the space shifts from a neutral site into a perceptual structure shaped by commands, echoes, and bodily reactions.
+\nDuring the performance, they established a single rule: whenever two participants encounter one another, they must say “No One Is Allowed In” and immediately reverse their original trajectory.\nThis rule does not serve efficiency or any concrete goal. Instead, it produces interruption, avoidance, and repetition. Bodies are compelled to respond to verbal commands; potential encounters are cancelled, and paths are continuously redirected. Through repeated execution, the space shifts from a neutral site into a perceptual structure shaped by commands, echoes, and bodily reactions.
 在表演实施过程中，我们设置了一个规则： 每当两人相遇，必须说出“闲人免进”并且调转原先的行动轨迹。 \n这一规则并不服务于效率或目标，相反，它不断制造中断、回避与重复。身体在空间中被迫回应语言的指令，原本可能发生的接近被取消，路径被反复折返。随着规则的持续执行，空间逐渐从一个中性的场所，转变为由命令、回声与身体反应共同构成的感知结构。
-\nThrough this work, we seek to examine how space is endowed with meaning through instruction, and how individuals perceive their position within prescribed behavioral logic. Language here functions as a force that intervenes in action and reshapes movement. “No One Is Allowed In” operates both as a refusal and as self-discipline; it addresses the other while continuously turning back toward the self.\nThrough repeated encounters and evasions, the space is re-measured and actions are rewritten, while “entry” itself becomes an act that can never be fully realized.
+\nThrough this work, artist seeks to examine how space is endowed with meaning through instruction, and how individuals perceive their position within prescribed behavioral logic. Language here functions as a force that intervenes in action and reshapes movement. “No One Is Allowed In” operates both as a refusal and as self-discipline; it addresses the other while continuously turning back toward the self.\nThrough repeated encounters and evasions, the space is re-measured and actions are rewritten, while “entry” itself becomes an act that can never be fully realized.
 我们试图探讨空间如何被指令赋予意义，以及个体如何在被规定的行为逻辑中感知自身的位置。语言在此成为一种介入行动、重塑路径的力量。“闲人免进”既是拒绝，也是自我约束；既指向他者，也不断回返到自身。\n在不断重复的相遇与回避中，空间被重新丈量，行动被重新书写，而“进入”本身，成为一件始终无法完成的事情。`, 
                 type: "Performance Art", 
                 year: "2024",
@@ -1775,19 +1843,19 @@ The flames burned more and more, and their figures twisted and rose in the flame
                 
                 // 初始亮起效果 (6秒)
                 setTimeout(() => {
-                    bgDiv.style.transition = 'opacity 3s ease'; 
-                    bgDiv.style.opacity = 0.8;
+                    bgDiv.style.transition = 'opacity 1s ease'; 
+                    bgDiv.style.opacity = 0.9;
                 }, 50); 
             }
 
-            const totalDuration = 8000; // 8 seconds total cycle
-            const fadeOutDuration = 1000; // 2 seconds fade out to black
+            const totalDuration = 6000; // 8 seconds total cycle
+            const fadeOutDuration = 1500; // 2 seconds fade out to black
 
             // 设置循环，每 8 秒执行一次
             homeBackgroundCycleInterval = setInterval(() => {
                 
                 // 1. 设置 2秒快速淡出
-                bgDiv.style.transition = `opacity ${fadeOutDuration / 1000}s ease`;
+                bgDiv.style.transition = `opacity ${fadeOutDuration / 800}s ease`;
                 bgDiv.style.opacity = 0; // 开始淡出（变黑）
                 
                 setTimeout(() => {
@@ -1801,7 +1869,7 @@ The flames burned more and more, and their figures twisted and rose in the flame
                         bgDiv.style.backgroundImage = `url('${nextImagePath}')`;
 
                         // 3. 设置 6秒缓慢淡入
-                        bgDiv.style.transition = `opacity ${(totalDuration - fadeOutDuration) / 1000}s ease`;
+                        bgDiv.style.transition = `opacity ${(totalDuration - fadeOutDuration) / 3000}s ease`;
                         bgDiv.style.opacity = 0.9; // 开始淡入（变亮）
                     };
                     tempImg.src = nextImagePath;
@@ -2177,9 +2245,9 @@ function renderStore() {
 
         function renderAbout() {
             // ** 集成新的个人简介文本 **
-            const bioText = `<p class="p-serif">Cao Xinran is currently studying at the Institute of Creativity and Innovation, Xiamen University. Her practice spans video, installation, performance, archival materials, and augmented reality. She is passionate about observing and exploring daily life and past memories, navigating a state of "free-flowing contemplation" through visual media and writing.<p class="p-serif">曹欣然目前就读于厦门大学创意与创新学院。创作涵盖影像、装置、行为、档案材料与增强现实。她热衷于观察和探索日常生活和过去的记忆，通过视觉媒体和写作来驾驭一种“自由流动的沉思”状态。她试图捕捉过去模糊的片段和当下微妙的、容易被忽视的时刻。
-                <p class="p-serif">She focuses on the suspension of time—those moments that linger, repeat, or cannot be concluded. In her work, disappearance does not signify an end, but rather a starting point for constant return.<p class="p-serif">她关注时间的悬置——那些停留、重复、无法结束的时刻。
-                <p class="p-serif">Through subtle yet continuous intervention, she seeks to explore how memory resists erasure and how fragile existence continues to manifest amidst irreversible change.<p class="p-serif">她试图构建一种“停留”的条件——停留在缺席之中，停留在未完成的空间里，停留在注定徒劳的行动中。
+            const bioText = `<p class="p-serif">Cao Xinran is currently studying at the Institute of Creativity and Innovation, Xiamen University. \nHer practice spans video, installation, performance, archival materials, and augmented reality. \nShe is passionate about observing and exploring daily life and past memories, navigating a state of "free-flowing contemplation" through visual media and writing.<p class="p-serif">曹欣然目前就读于厦门大学创意与创新学院。创作涵盖影像、装置、行为、档案材料与增强现实。她热衷于观察和探索日常生活和过去的记忆，通过视觉媒体和写作来驾驭一种“自由流动的沉思”状态。\n她试图捕捉过去模糊的片段和当下微妙的、容易被忽视的时刻。
+                <p class="p-serif">Her works focus on the suspension of time—those moments that linger, repeat, or cannot be concluded. \nIn her work THE EXCAVATOR, disappearance does not signify an end, but rather a starting point for constant return.<p class="p-serif">她关注时间的悬置——那些停留、重复、无法结束的时刻。
+                <p class="p-serif">Remaining in absence, remaining in the unfinished space, remaining in actions doomed to be in vain.\n停留在缺席之中，停留在未完成的空间里，停留在注定徒劳的行动中。
             `;
 
             return `
@@ -2256,8 +2324,10 @@ function renderStore() {
 
             if (pageKey === 'home') {
                 targetOpacity = 0.4;
-                targetFilter = 'grayscale(30%) brightness(0.5)';
+                targetFilter = 'grayscale(60%) brightness(0.5)';
                 contentHtml = renderHome(); 
+                bgDiv.style.transition = 'opacity 1s ease'; // 添加这一行：强制设置浮现速度为 1秒
+    cycleHomeBackground();
             }
             else if (pageKey === 'works' || isProjectRoute) {
                 targetOpacity = 0.25; 
