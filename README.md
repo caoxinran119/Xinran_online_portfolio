@@ -987,7 +987,7 @@
                 content: "Stories of Secondhand Smoke",
                 sections: [
                     { 
-                        title: "I. Goodbye, Bridge", 
+                        title: " Goodbye, Bridge", 
                         content: `I don't want to drown in the downpour,
 Endless yearning and reminiscence,
 An incurable,
@@ -1026,7 +1026,7 @@ A fragmented song.
 2023.8.23` 
                     },
                     { 
-                        title: "II. Pacific Saury", 
+                        title: "I Pacific Saury", 
                         content: `Eating a grilled Pacific saury at 3 AM alone
 Is pretty satisfying.
 Doing inappropriate things at inappropriate times
@@ -1057,7 +1057,7 @@ And so much more.
 2024.4.14`
                     },
                     { 
-                        title: "III. Loose", 
+                        title: " Loose", 
                         content: `The wind makes bones rustle,
 
 Loose,
@@ -1084,7 +1084,7 @@ An undercurrent's fierce surge.
                 content: "The river keeps its promises, always moving away from where it began. I try to be more like the river, less like the stone that holds the bank in place. But gravity, the mundane pull of the known, makes a quiet anchor of the heart. To wander is simply to choose the current.",
                 sections: [
                     { 
-                        title: "I. Tushko", 
+                        title: " Tushko", 
                         content: `Music as a drug
 Has a long history.
 Cool breeze through the seaside blanket
@@ -1108,7 +1108,7 @@ Or a craving for LSD?
 2022.12.28 22:59` 
                     },
                     { 
-                        title: "II. The Sun Emerges From the Rubble Pile", 
+                        title: "I The Sun Emerges From the Rubble Pile", 
                         content: `The sun emerges from the rubble pile,
 Breathing out a cloud of white.
 Distant things
@@ -1132,7 +1132,7 @@ Then turn and walk forward.
                 content: "Not the blue of the sky, nor the sea, but the blue found in shadows—under the lip of a chipped ceramic cup, or the vein running across a tired wrist. It is the color of potential and quiet exhaustion, a necessary depth against the bright, insistent clamor of the world.",
                 sections: [
                     { 
-                        title: "I. Crocodile", 
+                        title: " Crocodile", 
                         content: `But all I wanted then was to climb that chimney,
 Sit in the winter sun,
 And swing my feet.
@@ -1153,7 +1153,7 @@ Waiting for the next.
 2023.1.4` 
                     },
                     { 
-                        title: "II. Releasing a Kite", 
+                        title: "I Releasing a Kite", 
                         content: `Releasing a kite
 Before sunset,
 On a still discernible
@@ -1175,7 +1175,7 @@ No matter how beautiful they once were.
 2024.7.11` 
                     },
                     { 
-                        title: "III. Confessional", 
+                        title: " Confessional", 
                         content: `We must be light enough to touch heaviness.
 We must reach heaviness to feel lightness.
 Selectively forget some dreams,
