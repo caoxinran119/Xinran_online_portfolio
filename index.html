@@ -252,7 +252,7 @@
         .works-container {
             display: flex;
             width: 100%;
-            max-width: 1200px;  
+            max-width: 100%;  
             margin: 0 auto; 
             gap: 5rem;
         }
@@ -260,7 +260,7 @@
         .works-index {
             flex: 0 0 40%; 
             border-right: 1px solid var(--border-color);
-            padding-right: 3rem;
+            padding-right: 0;
         }
 
         .works-index button {
@@ -291,7 +291,7 @@
 
         .works-index-title {
             font-family: var(--font-serif);
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 400; 
             color: var(--text-muted);
             transition: color 0.3s ease;
@@ -455,9 +455,9 @@
             pointer-events: none;
         }
 
-        /* Youtube 视频容器 - 尺寸减半 */
+        /* Youtube 视频容器 */
         .video-container {
-            width: 50%; 
+            width: 100%; 
             position: relative;
             padding-bottom: 28.125%; 
             height: 0;
@@ -470,13 +470,13 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
+            height: 200%;
             border: 0;
         }
 
         /* 文字区域样式 */
         .project-title {
-            font-size: 1.9rem;
+            font-size: 1.6rem;
             margin-bottom: 0.5rem;
             font-weight: 400;
             line-height: 1.1;
@@ -497,20 +497,23 @@
         .project-description-content {
             font-size: 1.0rem; 
             font-weight: 300;
-            line-height: 1.3; /* ⬅️ 调整行高，让行距更紧凑 */
+            line-height: 1.5; /* ⬅️ 调整行高，让行距更紧凑 */
             color: #cccccc;
             white-space: pre-wrap; 
             text-indent: 0 !important;
             margin-bottom: 0.5rem; /* ⬅️ 调整段落间距为原来的一半 */
             padding-bottom: 0;
+            white-space: pre-wrap;
         }
 
         /* About Page 个人介绍的通用段落样式（用于中文和英文） */
         .statement-text p, .statement-text pre {
             /* 确保 About 页面的段落也应用了更紧凑的间距 */
             font-size: 1.2rem;
+            font-weight: 300;
             line-height: 1.5; 
             margin-bottom: 0.8rem; /* ⬅️ 调整段落间距 */
+            max-width: 100%;
             text-indent: 0 !important; /* ⬅️ **确保左对齐** */
             white-space: pre-wrap;
         }
@@ -593,7 +596,7 @@
         
         /* NEW: Directory list for Journal Details */
         .journal-directory {
-            margin-top: 2rem;
+            margin-top: 1rem;
             padding-top: 2rem;
             border-top: 1px solid var(--border-color);
             display: flex;
@@ -629,13 +632,13 @@
         }
         
         .feed-container {
-            max-width: 700px;
+            max-width: 1000px;
             width: 100%;
         }
 
         .feed-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); 
+            grid-template-columns: repeat(4, 1fr); 
             gap: 2rem;
             width: 100%;
         }
@@ -659,7 +662,7 @@
         /* CSS for the image container in feed posts */
         .feed-visual-placeholder {
             width: 100%;
-            aspect-ratio: 4/3;
+            aspect-ratio: 1/1;
             background-color: #0a0a0a;
             margin-bottom: 1.5rem;
             display: flex;
@@ -831,15 +834,13 @@
 
         /* --- ABOUT --- */
         #about {
-            max-width: 1200px;
-            margin: 0 auto;
+            
             min-height: 80vh;
         }
         
         .about-inner {
             width: 100%;
-            max-width: 1000px;
-            margin: 0 auto;
+            padding: 0 rem;
         }
 
         .about-content {
@@ -874,21 +875,22 @@
         .statement-text p, .statement-text pre, .statement-text .project-description-content {
             /* 确保 About 页面的段落也应用了更紧凑的间距 */
             font-size: 1.0rem;
-            line-height: 1.3; 
+            line-height: 1.4; 
             margin-bottom: 0.5rem; /* ⬅️ 调整段落间距 */
             text-indent: 0 !important; /* ⬅️ **确保左对齐** */
+            max-width: 100%;
             white-space: pre-wrap;
         }
 
         .contact-info {
-            padding-top: 2rem;
+            padding-top: 1rem;
             border-top: 1px solid var(--border-color);
-            margin-top: 2rem;
+            margin-top: 0.5rem;
         }
         
         .social-links a {
             font-family: var(--font-sans);
-            font-size: 0.9rem;
+            font-size: 1rem;
             margin-right: 1.5rem;
             color: var(--text-muted);
         }
@@ -991,10 +993,6 @@
     <main id="content">
     </main>
 
-    <footer>
-        &copy; Cao Xinran. All rights reserved.
-    </footer>
-
     <script>
         // --- Global variables ---
         let homeBackgroundCycleInterval = null;
@@ -1032,19 +1030,13 @@
                 id: "project-01", 
                 title: "THE EXCAVATOR_还想再当一会儿钉子户", 
                 caption: "THE EXCAVATOR_还想再当一会儿钉子户", 
-                description: `
-                \n\nThis project is closely connected to my personal experience. From 2010 to 2016, I studied at Xiangshan Primary School in Yiwu, Zhejiang Province, and lived in the surrounding neighborhood for six or seven years. When I returned in 2019, the entire area had been almost completely cleared. The school stood alone, surrounded by excavators, like an island under siege. When I returned again in 2025, the site had become a construction zone, yet no new buildings had appeared. Time seemed suspended; the space remained in an unfinished state.
-\n\n这个项目与我个人的生活经验密切相关。2010 至 2016 年，我就读于浙江省义乌市香山小学，并在周边街区生活了六七年。2019 年我曾回到这里，发现整个街区几乎被完全清空，小学孤零零地伫立在原地，周围停放着挖掘机，如同一座被围困的孤岛。直到 2025 年，我再次回到这里，那片土地已成为施工现场，却依然没有任何新建筑出现——时间在此被悬置，空间保持着一种未完成的状态。
-
-\n\nAgainst this backdrop, I began to repeatedly ask: when the mechanical arm of the excavator swings toward the sky, what is it actually digging away? Or has nothing been taken at all?\n\n在这样的背景下，我开始反复思考：当挖掘机的机械臂朝向天空挥动时，它究竟挖走了什么？或者，是否什么也没有被挖走？
-
-\n\nThis long-vacant site evokes a sensation akin to phantom limb pain. Certain things that have already disappeared continue to exist in the form of pain. Through reflecting on the excavator as a symbol of destructive force, I turn to Mark Fisher’s concept of hauntology. Fisher suggests that we inhabit a time haunted by “lost futures”—futures once promised but never realized, whose ghosts continue to linger in the present.\n\n这块长期空置的土地让我产生了一种类似“幻肢痛”的感受。某些已经消失的东西，依然以疼痛的形式存在着。正是在对挖掘机所象征的“破坏性力量”的反思中，我开始引入马克·费舍尔（Mark Fisher）的幽灵学（Hauntology）。费舍尔提出，我们所处的时代被“逝去的未来”所困扰——那些曾被许诺却未能实现的未来，即便已经失效，其幽灵仍在当下徘徊。
-
-\n\nAt the same time, the concept of entropy from physics provides another lens through which I understand the disorder produced by urbanization. Urban renewal often entails the collapse of existing orders, the rupture between memory and space, and the homogenization of landscapes—a process that can be understood as a continuous increase in entropy. Individual memory is equally fragile, and demolition accelerates its dissipation by severing the connection between memory and physical space.\n\n与此同时，物理学中的“熵”概念为我理解城市化进程中的无序化提供了另一种视角。城市更新往往意味着旧有秩序的瓦解、空间记忆的断裂，以及景观的同质化。这一过程可以被理解为一种持续的“熵增”。而个体记忆本身同样是易逝的，拆除行为切断了记忆与物理空间之间的联系，加速了记忆的消散。
-
-\n\nThe work takes the form of an augmented reality (AR) installation, in which vanished architectural structures are repositioned at their original site. I introduce an excavator device to “dig” buildings that no longer exist within physical space. This gesture—directed toward emptiness and doomed to futility—constitutes a concretized act of “meaninglessness.”\n\n作品以增强现实（AR）装置的形式呈现，将已消失的建筑景观重新置回其原始位置。我设置了一台挖掘机装置，去“挖掘”物理空间中并不存在的建筑。这一指向空无的、注定徒劳的动作，本身构成了一种具象化的“无意义”行为。
-
-\n\nWithin the work, the excavator becomes a concrete symbol of entropy. It demolishes, clears, and covers everything, embodying the raw force through which urban development erases the past and imposes new orders. Through the intervention of augmented reality, I attempt to locate a “lost future” in the face of irreversible physical disappearance—a stance of remaining lucid within absurdity, and of continuing to resist forgetting.\n\n在作品中，挖掘机成为“熵增”的具象化符号。它推倒、清空、覆盖一切，象征着城市发展中抹去过去、强制植入新秩序的原始力量。通过增强现实的介入，我试图在不可逆的物理消逝面前，寻找一种“失落的未来”——一种在荒谬中保持清醒、并持续抵抗遗忘的姿态。`, 
+                description: `\nThis project is closely connected to my personal experience. From 2010 to 2016, I studied at Xiangshan Primary School in Yiwu, Zhejiang Province, and lived in the surrounding neighborhood for six or seven years. When I returned in 2019, the entire area had been almost completely cleared. The school stood alone, surrounded by excavators, like an island under siege. When I returned again in 2025, the site had become a construction zone, yet no new buildings had appeared. Time seemed suspended; the space remained in an unfinished state.
+这个项目与我个人的生活经验密切相关。2010 至 2016 年，我就读于浙江省义乌市香山小学，并在周边街区生活了六七年。2019 年我曾回到这里，发现整个街区几乎被完全清空，小学孤零零地伫立在原地，周围停放着挖掘机，如同一座被围困的孤岛。直到 2025 年，我再次回到这里，那片土地已成为施工现场，却依然没有任何新建筑出现——时间在此被悬置，空间保持着一种未完成的状态。
+\nAgainst this backdrop, I began to repeatedly ask: when the mechanical arm of the excavator swings toward the sky, what is it actually digging away? Or has nothing been taken at all?\n在这样的背景下，我开始反复思考：当挖掘机的机械臂朝向天空挥动时，它究竟挖走了什么？或者，是否什么也没有被挖走？
+\nThis long-vacant site evokes a sensation akin to phantom limb pain. Certain things that have already disappeared continue to exist in the form of pain. Through reflecting on the excavator as a symbol of destructive force, I turn to Mark Fisher’s concept of hauntology. Fisher suggests that we inhabit a time haunted by “lost futures”—futures once promised but never realized, whose ghosts continue to linger in the present.\n这块长期空置的土地让我产生了一种类似“幻肢痛”的感受。某些已经消失的东西，依然以疼痛的形式存在着。正是在对挖掘机所象征的“破坏性力量”的反思中，我开始引入马克·费舍尔（Mark Fisher）的幽灵学（Hauntology）。费舍尔提出，我们所处的时代被“逝去的未来”所困扰——那些曾被许诺却未能实现的未来，即便已经失效，其幽灵仍在当下徘徊。
+\n\nAt the same time, the concept of entropy from physics provides another lens through which I understand the disorder produced by urbanization. Urban renewal often entails the collapse of existing orders, the rupture between memory and space, and the homogenization of landscapes—a process that can be understood as a continuous increase in entropy. Individual memory is equally fragile, and demolition accelerates its dissipation by severing the connection between memory and physical space.\n与此同时，物理学中的“熵”概念为我理解城市化进程中的无序化提供了另一种视角。城市更新往往意味着旧有秩序的瓦解、空间记忆的断裂，以及景观的同质化。这一过程可以被理解为一种持续的“熵增”。而个体记忆本身同样是易逝的，拆除行为切断了记忆与物理空间之间的联系，加速了记忆的消散。
+\n\nThe work takes the form of an augmented reality (AR) installation, in which vanished architectural structures are repositioned at their original site. I introduce an excavator device to “dig” buildings that no longer exist within physical space. This gesture—directed toward emptiness and doomed to futility—constitutes a concretized act of “meaninglessness.”\n作品以增强现实（AR）装置的形式呈现，将已消失的建筑景观重新置回其原始位置。我设置了一台挖掘机装置，去“挖掘”物理空间中并不存在的建筑。这一指向空无的、注定徒劳的动作，本身构成了一种具象化的“无意义”行为。
+\n\nWithin the work, the excavator becomes a concrete symbol of entropy. It demolishes, clears, and covers everything, embodying the raw force through which urban development erases the past and imposes new orders. Through the intervention of augmented reality, I attempt to locate a “lost future” in the face of irreversible physical disappearance—a stance of remaining lucid within absurdity, and of continuing to resist forgetting.\n在作品中，挖掘机成为“熵增”的具象化符号。它推倒、清空、覆盖一切，象征着城市发展中抹去过去、强制植入新秩序的原始力量。通过增强现实的介入，我试图在不可逆的物理消逝面前，寻找一种“失落的未来”——一种在荒谬中保持清醒、并持续抵抗遗忘的姿态。`, 
                 type: "Video / AR Installation", 
                 year: "2025",
                 previewImagePath: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/FF_2.jpg", 
@@ -1062,16 +1054,12 @@
                 id: "project-02", 
                 title: "NO ONE IS ALLOWED IN_闲人免进", 
                 caption: "NO ONE IS ALLOWED IN_闲人免进", 
-                description: `
-                \n\nWe encountered a semi-underground space—long, enclosed, and difficult to apprehend at a glance, like a hidden passage.
-Its posted regulation of “No Entry” became the point of departure for the work No One Is Allowed In.
-\n\n我们发现了一个半地下的空间。它幽长、封闭、难以一眼看清，像是一段被隐藏的通道。\n其“禁止入内”的规定，激发出“闲人免进”的主题。
-
-\n\nDuring the performance, we established a single rule: whenever two participants encounter one another, they must say “No One Is Allowed In” and immediately reverse their original trajectory.\nThis rule does not serve efficiency or any concrete goal. Instead, it produces interruption, avoidance, and repetition. Bodies are compelled to respond to verbal commands; potential encounters are cancelled, and paths are continuously redirected. Through repeated execution, the space shifts from a neutral site into a perceptual structure shaped by commands, echoes, and bodily reactions.
-\n\n在表演实施过程中，我们设置了一个规则： 每当两人相遇，必须说出“闲人免进”并且调转原先的行动轨迹。 \n这一规则并不服务于效率或目标，相反，它不断制造中断、回避与重复。身体在空间中被迫回应语言的指令，原本可能发生的接近被取消，路径被反复折返。随着规则的持续执行，空间逐渐从一个中性的场所，转变为由命令、回声与身体反应共同构成的感知结构。
-
-\n\nThrough this work, we seek to examine how space is endowed with meaning through instruction, and how individuals perceive their position within prescribed behavioral logic. Language here functions as a force that intervenes in action and reshapes movement. “No One Is Allowed In” operates both as a refusal and as self-discipline; it addresses the other while continuously turning back toward the self.\nThrough repeated encounters and evasions, the space is re-measured and actions are rewritten, while “entry” itself becomes an act that can never be fully realized.
-\n\n我们试图探讨空间如何被指令赋予意义，以及个体如何在被规定的行为逻辑中感知自身的位置。语言在此成为一种介入行动、重塑路径的力量。“闲人免进”既是拒绝，也是自我约束；既指向他者，也不断回返到自身。\n在不断重复的相遇与回避中，空间被重新丈量，行动被重新书写，而“进入”本身，成为一件始终无法完成的事情。`, 
+                description: `\nWe encountered a semi-underground space—long, enclosed, and difficult to apprehend at a glance, like a hidden passage.
+Its posted regulation of “No Entry” became the point of departure for the work No One Is Allowed In.\n我们发现了一个半地下的空间。它幽长、封闭、难以一眼看清，像是一段被隐藏的通道。\n其“禁止入内”的规定，激发出“闲人免进”的主题。
+\nDuring the performance, we established a single rule: whenever two participants encounter one another, they must say “No One Is Allowed In” and immediately reverse their original trajectory.\nThis rule does not serve efficiency or any concrete goal. Instead, it produces interruption, avoidance, and repetition. Bodies are compelled to respond to verbal commands; potential encounters are cancelled, and paths are continuously redirected. Through repeated execution, the space shifts from a neutral site into a perceptual structure shaped by commands, echoes, and bodily reactions.
+在表演实施过程中，我们设置了一个规则： 每当两人相遇，必须说出“闲人免进”并且调转原先的行动轨迹。 \n这一规则并不服务于效率或目标，相反，它不断制造中断、回避与重复。身体在空间中被迫回应语言的指令，原本可能发生的接近被取消，路径被反复折返。随着规则的持续执行，空间逐渐从一个中性的场所，转变为由命令、回声与身体反应共同构成的感知结构。
+\nThrough this work, we seek to examine how space is endowed with meaning through instruction, and how individuals perceive their position within prescribed behavioral logic. Language here functions as a force that intervenes in action and reshapes movement. “No One Is Allowed In” operates both as a refusal and as self-discipline; it addresses the other while continuously turning back toward the self.\nThrough repeated encounters and evasions, the space is re-measured and actions are rewritten, while “entry” itself becomes an act that can never be fully realized.
+我们试图探讨空间如何被指令赋予意义，以及个体如何在被规定的行为逻辑中感知自身的位置。语言在此成为一种介入行动、重塑路径的力量。“闲人免进”既是拒绝，也是自我约束；既指向他者，也不断回返到自身。\n在不断重复的相遇与回避中，空间被重新丈量，行动被重新书写，而“进入”本身，成为一件始终无法完成的事情。`, 
                 type: "Performance Art", 
                 year: "2024",
                 previewImagePath: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/NEO_1.png", 
@@ -1090,17 +1078,12 @@ Its posted regulation of “No Entry” became the point of departure for the wo
                 id: "project-03", 
                 title: "THE SQUAD WHO GUARD THE FLAG_护卫队 ", 
                 caption: "THE SQUAD WHO GUARD THE FLAG_护卫队", 
-                description: `
-                \n\nTen years ago, while visiting the Forbidden City, I accidentally recorded a blurred image with a handheld DV camera. The image itself was indistinct; what remained was a brief phrase spoken by the tour guide—“the squad who guard the flag.” The footage and that phrase together became a persistent anchor in my memory.
-\n\n十年前，我在故宫游览时，手持 DV 摄像机偶然记录下一段模糊的影像。画面并不清晰，真正留下来的，是导游口中那句简短的称呼——“护卫队”。这段影像与那句话，一同成为我记忆中一个难以移除的锚点。
-
-\n\nAt the time, I had no expectation that this footage would be rediscovered ten years later.\n\n当时的我并未想到，这段视频会在十年后被重新找到。
-
-\n\nIn this work, the Forbidden City is no longer only the Forbidden City. It becomes any space that has been observed and marked; “ten years ago” is no longer a precise temporal point, but a repeatedly designated past. The Forbidden City itself already carries the meaning of the past, while “ten years” as a unit of time holds no inherent significance—it is simply a measure to which we habitually assign value, names, and commemoration. Ten years before and ten years after, one hundred years before and one hundred years after, bear no essential difference on the scale of time. Once a moment is recorded, it simultaneously acquires a sense of permanence and begins to vanish.\n\n在这件作品中，故宫不再只是故宫，它可以是任何一个被观看、被标记的空间；十年前也不再是一个具体的时间节点，而是一个被不断指认的过去。故宫这一场所本身就承载着“过去”的含义，而“十年”这一时间单位并不具备天然的意义，只是人们习惯于不断为时间赋值、命名和纪念。十年前与十年后，一百年前与一百年后，在时间的尺度中并无本质差别。某个瞬间一旦被记录，既获得了永恒，也同时走向消失。
-
-\n\nIf the world were merely a structure composed of material, it might have already collapsed into ruins. Images, however, delay decay to a certain extent, temporarily suspending time. They resemble a world caught within time itself.\n\n如果世界仅仅是由物质构成的结构体，它或许早已化作废墟。但影像在某种程度上延缓了衰败，将时间短暂地悬置。影像如同一个被困在时间中的世界。
-
-\n\nThrough re-editing and reorganizing these images, and through repeated acts of looking back, the sense of place gradually dissolves. The specificity of the Forbidden City becomes less important; it begins to resemble any of the repeatedly viewed, symbolically charged spaces within memory. What remains clear are only a few words, stripped of their concrete political implications, echoing persistently within consciousness.\n\n我对这些影像进行重新编排与重组，在不断的回溯中，地方感逐渐消解。故宫的特定性变得不再重要，它更像是记忆中那些被反复观看、不断符号化的空间之一。唯一仍然清晰的，是几个被抽离了具体政治指向的词语，在意识中反复回响。`, 
+                description: `\n\nTen years ago, while visiting the Forbidden City, I accidentally recorded a blurred image with a handheld DV camera. The image itself was indistinct; what remained was a brief phrase spoken by the tour guide—“the squad who guard the flag.” The footage and that phrase together became a persistent anchor in my memory.
+十年前，我在故宫游览时，手持 DV 摄像机偶然记录下一段模糊的影像。画面并不清晰，真正留下来的，是导游口中那句简短的称呼——“护卫队”。这段影像与那句话，一同成为我记忆中一个难以移除的锚点。
+\nAt the time, I had no expectation that this footage would be rediscovered ten years later.\n当时的我并未想到，这段视频会在十年后被重新找到。
+\nIn this work, the Forbidden City is no longer only the Forbidden City. It becomes any space that has been observed and marked; “ten years ago” is no longer a precise temporal point, but a repeatedly designated past. The Forbidden City itself already carries the meaning of the past, while “ten years” as a unit of time holds no inherent significance—it is simply a measure to which we habitually assign value, names, and commemoration. Ten years before and ten years after, one hundred years before and one hundred years after, bear no essential difference on the scale of time. Once a moment is recorded, it simultaneously acquires a sense of permanence and begins to vanish.\n在这件作品中，故宫不再只是故宫，它可以是任何一个被观看、被标记的空间；十年前也不再是一个具体的时间节点，而是一个被不断指认的过去。故宫这一场所本身就承载着“过去”的含义，而“十年”这一时间单位并不具备天然的意义，只是人们习惯于不断为时间赋值、命名和纪念。十年前与十年后，一百年前与一百年后，在时间的尺度中并无本质差别。某个瞬间一旦被记录，既获得了永恒，也同时走向消失。
+\nIf the world were merely a structure composed of material, it might have already collapsed into ruins. Images, however, delay decay to a certain extent, temporarily suspending time. They resemble a world caught within time itself.\n如果世界仅仅是由物质构成的结构体，它或许早已化作废墟。但影像在某种程度上延缓了衰败，将时间短暂地悬置。影像如同一个被困在时间中的世界。
+\nThrough re-editing and reorganizing these images, and through repeated acts of looking back, the sense of place gradually dissolves. The specificity of the Forbidden City becomes less important; it begins to resemble any of the repeatedly viewed, symbolically charged spaces within memory. What remains clear are only a few words, stripped of their concrete political implications, echoing persistently within consciousness.\n我对这些影像进行重新编排与重组，在不断的回溯中，地方感逐渐消解。故宫的特定性变得不再重要，它更像是记忆中那些被反复观看、不断符号化的空间之一。唯一仍然清晰的，是几个被抽离了具体政治指向的词语，在意识中反复回响。`, 
                 type: "Experimental Film", 
                 year: "2023-Ongoing",
                 previewImagePath: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/FLAG_exh3.jpg", 
@@ -1118,17 +1101,13 @@ Its posted regulation of “No Entry” became the point of departure for the wo
                 id: "project-04", 
                 title: "RIVER·TRAIN·FLAME_河流·列车·火焰", 
                 caption: "RIVER·TRAIN·FLAME_河流·列车·火焰",
-                description: `
-                \n\nMy practice begins with a hypothesis: If suicide is no longer regarded as the end of life, but as the point of departure for two life narratives, how might the story unfold?
+                description: `\n\nMy practice begins with a hypothesis: If suicide is no longer regarded as the end of life, but as the point of departure for two life narratives, how might the story unfold?
 This work centers on two figures—the Chinese poet Haizi and Kurt Cobain, the frontman of the American band Nirvana. Through the form of a pseudo-documentary, I construct a fictional narrative space in which two artists from distinct cultural contexts are placed on the same narrative trajectory. Across their texts and inner worlds, I sense a resonance: a longing for freedom, a confrontation with the tension between ideals and reality, and a sustained inquiry into the meaning of life.
-\n\n我的创作始于一个假设：如果自杀不再被视为生命的终点，而是两段生命叙事的起点，那么，故事将如何展开？\n这件作品围绕两位人物展开——中国诗人海子，与美国乐队 Nirvana 的主唱 Kurt Cobain。我以伪纪录片的方式构建了一个虚构的叙事空间，将两位来自不同文化背景的艺术家置于同一条叙事轨道之中。他们在文本与精神层面呈现出某种共振：对自由的渴望、对理想与现实冲突的感知，以及对生命意义的持续追问.
-\n\nI do not attempt to situate this work within a framework of “Sino–American cultural exchange.” In the process of creation, they function first and foremost as performed roles rather than cultural symbols. It is precisely through this decontextualization that I am able to focus on individual experience itself, and on how life is felt under extreme conditions.\n\n我并不试图将这件作品归入“中美文化交流”的叙事框架。在创作中，他们首先是被扮演的角色，而非文化象征。正是在这种去语境化的状态下，我得以将注意力转向个体经验本身，以及生命在极端处境中的感受方式。
-
-\n\nCertain place names and fragments of memory in the work are drawn from existing texts, such as “Delingha” from Haizi’s poetry, and an anecdote about Cobain’s childhood involving an imaginary friend who went to Vietnam. Embedded within the fictional narrative, these details form a memory space suspended between reality and imagination. The train functions as a recurring motif, connecting disparate times, locations, and narrative fragments. Within an unstable narrative flow, it provides a mobile point of reference, allowing the work to be perceived as an ongoing journey.\n\n作品中的部分地名与记忆碎片源自真实文本，例如海子诗歌中的“德令哈”，以及关于柯本童年时期“虚构朋友前往越南”的叙述。这些细节被嵌入虚构叙事之中，构成一个介于真实与想象之间的记忆空间。我以“列车”作为贯穿始终的意象，将不同的时间、地点与叙事片段串联起来。列车在不稳定的叙事流中提供了一种移动中的参照，使作品整体被感知为一场持续进行的旅程。
-
-\n\nPerhaps the most striking commonality between Haizi and Cobain is suicide. In this work, however, it is not treated as an ending, but as the narrative’s point of departure. Each sought to reach a state of ecstasy through different means: Cobain pursued psychic liberation through drugs, while Haizi sought spiritual transcendence through the practice of qigong. Both gestures point toward a shared desire for an intensified experience of existence.\n\n海子与柯本最显著的共同点，或许正是自杀。在这件作品中，它并非终结，而是叙事的起点。他们都试图通过不同方式抵达一种迷狂状态：柯本借助毒品寻求精神的解放，海子则通过修炼气功追求心灵的超脱。共同指向一种对存在强度的渴望。
-
-\n\nIn my view, suicide is not merely a form of passive escape; it may also be understood as a confrontation with an absurd world—an extreme and contradictory gesture of resistance. Through this work, I attempt to approach the sensation of that resistance itself: how it emerges, how it is experienced, remembered, and narrated. Rather than offering answers, the work invites viewers into a rewritten journey, within which they may sense the tension between life, collapse, and meaning.\n\n在我看来，自杀并不只是消极的逃离，也可以被理解为对荒谬世界的反抗——一种极端而矛盾的姿态。通过这件作品，我试图靠近这种反抗的感受本身：它如何发生，又如何被经验、被记忆、被讲述。作品并不提供答案，而是邀请观者进入这段被重新书写的旅程，在其中感知生命、崩塌与意义之间的张力。`, 
+我的创作始于一个假设：如果自杀不再被视为生命的终点，而是两段生命叙事的起点，那么，故事将如何展开？\n这件作品围绕两位人物展开——中国诗人海子，与美国乐队 Nirvana 的主唱 Kurt Cobain。我以伪纪录片的方式构建了一个虚构的叙事空间，将两位来自不同文化背景的艺术家置于同一条叙事轨道之中。他们在文本与精神层面呈现出某种共振：对自由的渴望、对理想与现实冲突的感知，以及对生命意义的持续追问.
+\nI do not attempt to situate this work within a framework of “Sino–American cultural exchange.” In the process of creation, they function first and foremost as performed roles rather than cultural symbols. It is precisely through this decontextualization that I am able to focus on individual experience itself, and on how life is felt under extreme conditions.\n我并不试图将这件作品归入“中美文化交流”的叙事框架。在创作中，他们首先是被扮演的角色，而非文化象征。正是在这种去语境化的状态下，我得以将注意力转向个体经验本身，以及生命在极端处境中的感受方式。
+\nCertain place names and fragments of memory in the work are drawn from existing texts, such as “Delingha” from Haizi’s poetry, and an anecdote about Cobain’s childhood involving an imaginary friend who went to Vietnam. Embedded within the fictional narrative, these details form a memory space suspended between reality and imagination. The train functions as a recurring motif, connecting disparate times, locations, and narrative fragments. Within an unstable narrative flow, it provides a mobile point of reference, allowing the work to be perceived as an ongoing journey.\n作品中的部分地名与记忆碎片源自真实文本，例如海子诗歌中的“德令哈”，以及关于柯本童年时期“虚构朋友前往越南”的叙述。这些细节被嵌入虚构叙事之中，构成一个介于真实与想象之间的记忆空间。我以“列车”作为贯穿始终的意象，将不同的时间、地点与叙事片段串联起来。列车在不稳定的叙事流中提供了一种移动中的参照，使作品整体被感知为一场持续进行的旅程。
+\nPerhaps the most striking commonality between Haizi and Cobain is suicide. In this work, however, it is not treated as an ending, but as the narrative’s point of departure. Each sought to reach a state of ecstasy through different means: Cobain pursued psychic liberation through drugs, while Haizi sought spiritual transcendence through the practice of qigong. Both gestures point toward a shared desire for an intensified experience of existence.\n海子与柯本最显著的共同点，或许正是自杀。在这件作品中，它并非终结，而是叙事的起点。他们都试图通过不同方式抵达一种迷狂状态：柯本借助毒品寻求精神的解放，海子则通过修炼气功追求心灵的超脱。共同指向一种对存在强度的渴望。
+\nIn my view, suicide is not merely a form of passive escape; it may also be understood as a confrontation with an absurd world—an extreme and contradictory gesture of resistance. Through this work, I attempt to approach the sensation of that resistance itself: how it emerges, how it is experienced, remembered, and narrated. Rather than offering answers, the work invites viewers into a rewritten journey, within which they may sense the tension between life, collapse, and meaning.\n在我看来，自杀并不只是消极的逃离，也可以被理解为对荒谬世界的反抗——一种极端而矛盾的姿态。通过这件作品，我试图靠近这种反抗的感受本身：它如何发生，又如何被经验、被记忆、被讲述。作品并不提供答案，而是邀请观者进入这段被重新书写的旅程，在其中感知生命、崩塌与意义之间的张力。`, 
                 type: "Video", 
                 year: "2024",
                 previewImagePath: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/MN_train_river_.png", 
@@ -1146,9 +1125,8 @@ This work centers on two figures—the Chinese poet Haizi and Kurt Cobain, the f
                 id: "project-05", 
                 title: "THE LUNG OF ALGORITHMS_算法肺", 
                 caption: "THE LUNG OF ALGORITHMS_算法肺", 
-                description: `
-                \n\nAn interactive video based on processing. It originated from a chest X-ray of mine. That was the first time I truly faced my own lungs. Subsequently, I transformed this medical image into a data stream and visual images, enabling the internal state of the body to be re-observed and recreated in the digital dimension.
-                \n\n 一个基于processing的交互视频。源于我一次胸部X光检查, 那是我第一次真正直面自己的肺部。随后, 我将这份医学影像转化为数据流与可视化影像, 使身体的内部状态在数字维度中被重新观看与再造。`, 
+                description: `\n\nAn interactive video based on processing. It originated from a chest X-ray of mine. That was the first time I truly faced my own lungs. Subsequently, I transformed this medical image into a data stream and visual images, enabling the internal state of the body to be re-observed and recreated in the digital dimension.
+一个基于processing的交互视频。源于我一次胸部X光检查, 那是我第一次真正直面自己的肺部。随后, 我将这份医学影像转化为数据流与可视化影像, 使身体的内部状态在数字维度中被重新观看与再造。`, 
                 type: "Interactive Video", 
                 year: "2025",
                 previewImagePath: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/The Lung of Algorithms_preview.png", 
@@ -1163,9 +1141,8 @@ This work centers on two figures—the Chinese poet Haizi and Kurt Cobain, the f
                 id: "project-06", 
                 title: "TO PERCEIVE THUS_如是观", 
                 caption: "TO PERCEIVE THUS_如是观", 
-                description: `
-                \n\nFire, rain, thunder, and other sounds of nature begin to collapse as someone murmurs indistinctly the things that leap into their mind. A grand ritual unfolds. 
-                \n\n火、雨、雷和其他自然的声音开始消失，因为有人模糊地喃喃自语着跳入他们脑海。一场盛大的仪式展开了。`, 
+                description: `\n\nFire, rain, thunder, and other sounds of nature begin to collapse as someone murmurs indistinctly the things that leap into their mind. A grand ritual unfolds. 
+火、雨、雷和其他自然的声音开始消失，因为有人模糊地喃喃自语着跳入他们脑海。一场盛大的仪式展开了。`, 
                 type: "Sound Dramaturgy / Experimental Sound", 
                 year: "2023",
                 previewImagePath: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/EMSOUND_2.png", 
@@ -1732,13 +1709,13 @@ The flames burned more and more, and their figures twisted and rose in the flame
                 
                 // 初始亮起效果 (6秒)
                 setTimeout(() => {
-                    bgDiv.style.transition = 'opacity 6s ease'; 
+                    bgDiv.style.transition = 'opacity 3s ease'; 
                     bgDiv.style.opacity = 0.8;
                 }, 50); 
             }
 
             const totalDuration = 8000; // 8 seconds total cycle
-            const fadeOutDuration = 2000; // 2 seconds fade out to black
+            const fadeOutDuration = 1000; // 2 seconds fade out to black
 
             // 设置循环，每 8 秒执行一次
             homeBackgroundCycleInterval = setInterval(() => {
@@ -1759,7 +1736,7 @@ The flames burned more and more, and their figures twisted and rose in the flame
 
                         // 3. 设置 6秒缓慢淡入
                         bgDiv.style.transition = `opacity ${(totalDuration - fadeOutDuration) / 1000}s ease`;
-                        bgDiv.style.opacity = 0.8; // 开始淡入（变亮）
+                        bgDiv.style.opacity = 0.9; // 开始淡入（变亮）
                     };
                     tempImg.src = nextImagePath;
 
@@ -2123,7 +2100,7 @@ function renderStore() {
                 <section id="store">
                     <div class="section-header">
                         <h2>STORE / OBJECTS</h2>
-                        <p class="en-text" style="font-size:1rem; color:var(--text-color); margin-bottom:0;">Tangible residues from the digital practice.</p>
+                        <p class="en-text" style="font-size:1rem; color:var(--text-color); margin-bottom:0;"
                     </div>
                     <div class="store-grid">
                         ${productHtml}
@@ -2134,21 +2111,9 @@ function renderStore() {
 
         function renderAbout() {
             // ** 集成新的个人简介文本 **
-            const bioText = `
-                <p class="p-serif">Cao Xinran is currently studying at the Institute of Creativity and Innovation, Xiamen University. Her practice spans video, installation, performance, archival materials, and augmented reality. She is passionate about observing and exploring daily life and past memories, navigating a state of "free-flowing contemplation" through visual media and writing. She seeks to capture fleeting fragments of the past and the subtle, easily overlooked moments of the present.</p>
-                
-                <p class="p-serif">曹欣然目前就读于厦门大学创意与创新学院。创作涵盖影像、装置、行为、档案材料与增强现实。她热衷于观察和探索日常生活和过去的记忆，通过视觉媒体和写作来驾驭一种“自由流动的沉思”状态。她试图捕捉过去模糊的片段和当下微妙的、容易被忽视的时刻。</p>
-
-                <p class="p-serif">She focuses on the suspension of time—those moments that linger, repeat, or cannot be concluded. In her work, disappearance does not signify an end, but rather a starting point for constant return. Memory is not preserved through repair; instead, it persists through delay, fragmentation, and ghostly presence.</p>
-                
-                <p class="p-serif">她关注时间的悬置——那些停留、重复、无法结束的时刻。在她的作品中，消失并不意味着终结，而是一种不断回返的起点。记忆并非通过修复得以保存，而是在延迟、断裂与幽灵般的存在中持续发生。</p>
-
-                <p class="p-serif">She often uses existing footage alongside on-site interventions, treating video as a temporal structure that both preserves experience and constantly erodes it. Repetition, rule-setting, and restrained gestures run through her work, allowing meaning to slowly emerge during the ongoing process.</p>
-                
-                <p class="p-serif">她常使用既有影像与现场介入，将影像视为一种时间结构：既保存经验，也不断侵蚀它。重复、规则设定与克制的动作贯穿其创作，使意义在持续的过程中缓慢显现。</p>
-
-                <p class="p-serif">She attempts to construct a condition of "staying"—staying within absence, staying in an unfinished space, and staying in actions that are destined to be futile. Through subtle yet continuous intervention, she seeks to explore how memory resists erasure and how fragile existence continues to manifest amidst irreversible change.
-                \n\n她试图构建一种“停留”的条件——停留在缺席之中，停留在未完成的空间里，停留在注定徒劳的行动中。通过微弱却持续的介入，她试图探讨记忆如何抵抗被抹除，以及脆弱的存在如何在不可逆的变化中继续显现。</p>
+            const bioText = `<p class="p-serif">Cao Xinran is currently studying at the Institute of Creativity and Innovation, Xiamen University. Her practice spans video, installation, performance, archival materials, and augmented reality. She is passionate about observing and exploring daily life and past memories, navigating a state of "free-flowing contemplation" through visual media and writing.<p class="p-serif">曹欣然目前就读于厦门大学创意与创新学院。创作涵盖影像、装置、行为、档案材料与增强现实。她热衷于观察和探索日常生活和过去的记忆，通过视觉媒体和写作来驾驭一种“自由流动的沉思”状态。她试图捕捉过去模糊的片段和当下微妙的、容易被忽视的时刻。
+                <p class="p-serif">She focuses on the suspension of time—those moments that linger, repeat, or cannot be concluded. In her work, disappearance does not signify an end, but rather a starting point for constant return.<p class="p-serif">她关注时间的悬置——那些停留、重复、无法结束的时刻。
+                <p class="p-serif">Through subtle yet continuous intervention, she seeks to explore how memory resists erasure and how fragile existence continues to manifest amidst irreversible change.<p class="p-serif">她试图构建一种“停留”的条件——停留在缺席之中，停留在未完成的空间里，停留在注定徒劳的行动中。
             `;
 
             return `
@@ -2163,8 +2128,7 @@ function renderStore() {
                             </div>
 
                             <div class="statement-text">
-                                <h3>
-                                    About Cao Xinran
+                                <h3>CAO Xinran
                                 </h3>
                                 <div class="project-description-content" style="margin-top: 1.5rem; max-width: 100%;">
                                     ${bioText}
