@@ -155,6 +155,43 @@
             border-bottom: 1px solid rgba(255,255,255,0.3);
         }
 
+        /* --- 汉堡按钮的基本样子 --- */
+.hamburger {
+    display: none; /* 【关键隔离点】默认不显示，确保电脑端看不见它 */
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 10px;
+    z-index: 2000; /* 确保它在最前面 */
+}
+
+/* 汉堡按钮的三条杠 */
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 1px; /* 极简的细线 */
+    background-color: #fff;
+    margin: 6px 0;
+    transition: 0.3s;
+}
+
+/* --- 手机全屏菜单的基本样子 --- */
+.mobile-overlay {
+    position: fixed;
+    top: 0;
+    right: -100%; /* 【关键隔离点】初始位置在屏幕右侧外面，看不见 */
+    width: 100%;
+    height: 100vh;
+    background: rgba(10, 10, 10, 0.98); /* 接近纯黑 */
+    z-index: 1500;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    transition: 0.5s ease-in-out; /* 侧滑效果 */
+}
+
         /* --- Animation Utilities --- */
         .reveal {
             opacity: 0;
@@ -897,6 +934,19 @@
 
         /* --- Responsive Design (保持不变) --- */
         @media (max-width: 1024px) {
+            /* --- 手机端逻辑隔离：隐藏电脑导航，显示汉堡按钮 --- */
+            .nav-links {
+                display: none !important; 
+            }
+
+            .hamburger {
+                display: block !important; 
+            }
+
+            .mobile-overlay.active {
+                right: 0; /* 点击时菜单从右侧滑入 */
+            }
+            /* --- 隔离结束 --- */
             .works-container {
                 flex-direction: column;
                 gap: 3rem;
@@ -988,12 +1038,28 @@
             <button onclick="navigate('store')">Store</button>
             <button onclick="navigate('about')">About</button>
         </div>
+
+    <button class="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<div class="mobile-overlay" id="mobileMenu">
+    <button onclick="navigate('home'); toggleMenu()">HOME</button>
+    </div>
     </nav>
 
     <main id="content">
     </main>
 
     <script>
+        /* 点击汉堡按钮时切换菜单的打开和关闭状态 */
+function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    if (menu) {
+        menu.classList.toggle('active');
+    }
+}
         // --- Global variables ---
         let homeBackgroundCycleInterval = null;
         let currentHomeBgIndex = 0;
@@ -2061,20 +2127,20 @@ function renderStore() {
             const products = [
                 { 
                     name: "Cigarette earrings", 
-                    price: "15 RMB", 
-                    caption: "I collect the cigarette butts I've smoked and use resin to make them into earrings.",
+                    price: "80 RMB", 
+                    caption: "I collect the cigarette butts and make them into earrings. 200MM*50MM",
                     imagePath: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/STORE_earings.jpg" 
                 },
                 { 
                     name: "ICE CUBE", 
-                    price: "8 RMB", 
-                    caption: "Small ice cubes tring to keep the shape of ash.",
+                    price: "50 RMB", 
+                    caption: "Small ice cubes tring to keep the shape of ash. 200MM*200MM*100MM",
                     imagePath: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/STORE_ICE_3.jpg" 
                 },
                 { 
                     name: "Stillness Object (Hand-cast Resin)", 
-                    price: "5 RMB", 
-                    caption: "Use resin to preserve pigments or other small items as archives.",
+                    price: "30 RMB", 
+                    caption: "Use resin to preserve pigments or other small items as archives. Changeable sizes",
                     imagePath: "https://media.githubusercontent.com/media/caoxinran119/Xinran_online_portfolio/main/images/STORE_BG_ICEGROUP_1.png" 
                 },
             ];
